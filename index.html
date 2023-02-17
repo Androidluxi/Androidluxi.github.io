@@ -1,307 +1,440 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="路茜的个人博客">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="路茜的个人博客">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
   
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <title>路茜的个人博客</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-侯岩岩要求的中文博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/02/17/%E4%BE%AF%E5%B2%A9%E5%B2%A9%E8%A6%81%E6%B1%82%E7%9A%84%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time class="dt-published" datetime="2023-02-17T05:27:35.000Z" itemprop="datePublished">2023-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/02/17/%E4%BE%AF%E5%B2%A9%E5%B2%A9%E8%A6%81%E6%B1%82%E7%9A%84%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/">侯岩岩要求的中文博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="我是侯岩岩要求的中文博客"><a href="#我是侯岩岩要求的中文博客" class="headerlink" title="我是侯岩岩要求的中文博客"></a>我是侯岩岩要求的中文博客</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/02/17/%E4%BE%AF%E5%B2%A9%E5%B2%A9%E8%A6%81%E6%B1%82%E7%9A%84%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/" data-id="cle83e1ud000188uwfvom4jme" data-title="侯岩岩要求的中文博客" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-进程间通信（IPC机制）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2023-02-17T05:15:39.092Z" itemprop="datePublished">2023-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="传统-IPC-通信原理"><a href="#传统-IPC-通信原理" class="headerlink" title="传统 IPC 通信原理"></a>传统 IPC 通信原理</h1><p><strong>在操作系统中，进程与进程间的内存和数据都是不共享的</strong>。这样做的目的，是为了避免进程间相互操作数据的现象发生，从而引起各自的安全问题。为了实现进程隔离，采用了虚拟地址空间，两个进程各自的虚拟地址不同，从逻辑上来实现彼此间的隔离。两个进程之间要进行通信，就需要采用特殊的通信机制：进程间通信（IPC:Inter-Process Communication，即进程间通信或跨进程通信，简称 IPC）。</p>
-<p><img src="https://img-blog.csdnimg.cn/5d182f4b99dc4edfa19e56c9a7ec7aef.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAVHIwZQ==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
-<p>​		一个进程空间分为用户空间和内核空间，用户空间是每个进程独有的，而内核空间则是所有进程间共有的。所以虽然不同进程的用户空间之间不能共享数据，但是我们可以通过内核空间来实现数据共享。</p>
-<p>​			数据在用户空间和内核空间之间的交互，需要调用系统方法：copy_from_user()和copy_to_user；数据拷贝2次，用户空间—&gt;&gt;内核空间—&gt;&gt;用户空间。</p>
-<p><img src="https://img-blog.csdnimg.cn/1975c44081ee4b00a3f28fb157a3b34c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAVHIwZQ==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="img"></p>
-<h1 id="Linux跨进程通信"><a href="#Linux跨进程通信" class="headerlink" title="Linux跨进程通信"></a>Linux跨进程通信</h1><p>Android系统就是基于Linux内核实现的，咱们先简单了解一下Linux系统的IPC方式。虽然不同的资料对各种方式的名称和种类说法不完全相同，但是主要来说有如下6种方式：（1）管道 Pipe；（2）信号Signal；（3）信号量Semaphore；（4）消息队列Message Queue；（5）共享内存Shared Memmory；（6）套接字Socket。</p>
-<h1 id="Android跨进程通信"><a href="#Android跨进程通信" class="headerlink" title="Android跨进程通信"></a>Android跨进程通信</h1><p>Android 进程间通信可以通过Android 四大组件实现。</p>
-<h2 id="1、Activity方式"><a href="#1、Activity方式" class="headerlink" title="1、Activity方式"></a>1、Activity方式</h2><p>Activity是四大组件中使用最频繁的，咱们先从它说起。使用Activity方式实现，就是使用startActivity()来启动另外一个进程的Activity。我们在使用App的使用，往往会遇到如下几种情形：</p>
-<p>（1）浏览器中看到一篇比较不错的文章，分享到微信朋友圈或者微博；</p>
-<p>（2）在某个App中点击某个网址，然后界面跳转到浏览器中进行阅读；</p>
-<p>（3）使用美团外卖app，看到店家的电话，点击联系商家时，跳转到了电话拨打界面…</p>
-<p>这些就是通过startActivity的方式从一个App，跳转到了另外一个App的Activity，从而实现了跨进程通信。</p>
-<p>我们知道，在调用startActivity(Intent intent)的时候，intent有两个类型：显式Intent和隐式Intent。</p>
-<p><strong>显式Intent的使用方式如下，用于进程内组件间通信</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="built_in">this</span>,OtherActivity.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-
-<p><strong>隐式intent的使用方式如下，用于IPC</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();</span><br><span class="line">intent.setAction(Intent.ACTION_CALL);</span><br><span class="line">startActivity(intent); <span class="comment">//startActivityForResult()同样，这里不赘述</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Intent.ACTION_CALL就是字符串常量“android.intent.action.CALL”，这种方式通过setAction的方式来启动目标app的Activity，上述代码就是启动电话app的拨号界面，有时候还可以带上电话号码等参数。由上可知，Activity实现跨进程通信的方式，适合于不同App之间功能界面的跳转。</p>
-<h2 id="2、Content-provider（后面简称CP）方式"><a href="#2、Content-provider（后面简称CP）方式" class="headerlink" title="2、Content provider（后面简称CP）方式"></a>2、Content provider（后面简称CP）方式</h2><p>当我们开发App需要用到联系人，多媒体信息等数据的时候，往往会通过系统提供Uri，采用CP的方式去获取。Android系统中，数据主要存储在自带的SqlLite数据库中。应用要共享SqlLite中的数据给其他App操作（增、删、改、查），就要用到CP，也就是说，CP主要用于跨进程数据库共享。Android系统提供了很多的CP来供其它App使用，如多媒体信息、联系人、日历等。如下图显示了Android系统提供的CP，包名都是以”com.android.providers“开头的：</p>
-<p>App开发者也可以自定义CP，把自己的数据提供给其它app使用，也可以自己定义操作权限，如只允许其它app读取自己的数据，而不允许修改等。CP的使用场景，是提供数据共享。CP本质上还是在操作数据库，数据存储在sdcard中，所以建立连接和操作数据都是耗时操作，所以注意开辟子线程去操作。当数据库中数据有变化时，Content Observer监听到数据库变化也是有一定的滞后。</p>
-<h2 id="3、Broadcase方式（我们要避免使用这种通信方式）"><a href="#3、Broadcase方式（我们要避免使用这种通信方式）" class="headerlink" title="3、Broadcase方式（我们要避免使用这种通信方式）"></a>3、Broadcase方式（我们要避免使用这种通信方式）</h2><p>Broadcast使用非常简单，注册好广播，添加上action，就可以等着接收其他进程发出的广播。发送和接收广播时，还可以借助Intent来携带数据。但是广播的使用存在很多问题，被很多程序员吐槽，甚至鄙夷，所以选择用广播进行跨进程通信，是下下策。下面盘点一下Broadcast的槽点：</p>
-<ol>
-<li>Broadcast是一种单向的通信方式。当一个程序发送广播后，其他应用只能被动地接收，无法向发送者反馈。</li>
-<li>Broadcast非常消耗系统资源，会导致系统性能下降。</li>
-<li>速度慢，容易造成系统ANR。且除了Parall Broadcast外，无法保证接收到的时间，甚至不一定能收得到。</li>
-<li>如果使用Ordered Broadcast，一个Receiver执行时间过长，会影响后面接收者的接收时间，甚至还有可能被中间某个Receiver拦截，导致后面Receiver无法接收到。</li>
-<li>发送者无法确定谁会接收该广播，而接收者也无发确认是谁发来的广播</li>
-<li>如果是静态注册的广播，一个没有开启的进程，都有可能被该广播激活。</li>
-</ol>
-<h2 id="4、Service方式"><a href="#4、Service方式" class="headerlink" title="4、Service方式"></a><strong>4、Service方式</strong></h2><p>普通的Service并不能实现跨进程操作，我们可以使用AIDL Service、LocalSocket来实现跨进程通信。</p>
-<h2 id="AIDL-Service实现跨进程通信"><a href="#AIDL-Service实现跨进程通信" class="headerlink" title="AIDL Service实现跨进程通信"></a>AIDL Service实现跨进程通信</h2><p>这种方式也是 bindService() 启动方式的一种使用情况，也是广受程序员们推崇的方式。</p>
-<ul>
-<li><strong>如果跨进程需要界面上的交互操作，用隐式startActivity()方式实现。</strong></li>
-<li><strong>如果需要共享数据，用Content Provider方式实现。</strong></li>
-<li><strong>排除前两种情形，就用AIDL。</strong></li>
-</ul>
-<p>我们想要使用AIDL就要了解binder IPC 机制。（属于Android特殊的跨进程通信机制）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/" data-id="cle83e1ug000288uw71agavem" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-我的博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time class="dt-published" datetime="2023-02-16T04:19:07.000Z" itemprop="datePublished">2023-02-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" data-id="cle83e1u3000088uw2qz0fjz5" data-title="我的博客" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/02/17/%E4%BE%AF%E5%B2%A9%E5%B2%A9%E8%A6%81%E6%B1%82%E7%9A%84%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/">侯岩岩要求的中文博客</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/">(no title)</a>
-          </li>
         
-          <li>
-            <a href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2023 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/02/17/%E4%BE%AF%E5%B2%A9%E5%B2%A9%E8%A6%81%E6%B1%82%E7%9A%84%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/" target="_self">
+          侯岩岩要求的中文博客
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/17/%E4%BE%AF%E5%B2%A9%E5%B2%A9%E8%A6%81%E6%B1%82%E7%9A%84%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/" target="_self">
+        <div>
+          我是侯岩岩要求的中文博客
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-17 13:27" pubdate>
+              2023-02-17
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/" target="_self">
+          
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/" target="_self">
+        <div>
+          传统 IPC 通信原理在操作系统中，进程与进程间的内存和数据都是不共享的。这样做的目的，是为了避免进程间相互操作数据的现象发生，从而引起各自的安全问题。为了实现进程隔离，采用了虚拟地址空间，两个进程各自的虚拟地址不同，从逻辑上来实现彼此间的隔离。两个进程之间要进行通信，就需要采用特殊的通信机制：进程间通信（IPC:Inter-Process Communication，即进程间通信或跨进程通信，简
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-17 13:15" pubdate>
+              2023-02-17
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
+          我的博客
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-16 12:19" pubdate>
+              2023-02-16
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
