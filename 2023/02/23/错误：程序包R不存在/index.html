@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="Android个人博客">
 <meta property="og:description" content="错误: 程序包R不存在” 的解决方法错误: 程序包R不存在    setContentView(R.layout.main);  这种情况一般就是包导错了，或者说：您引用的R可能与包名不符。下面总结我的排查过程:  有可能是：导入的包覆盖了真正要引用的R包，首先可以尝试删除你import android.R等这样的导入。然后rebuild project。但是我的项目里面并没有相关的导入。（没有解">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:\Users\Sc\AppData\Roaming\Typora\typora-user-images\image-20230223165809983.png">
-<meta property="og:image" content="c:\Users\Sc\AppData\Roaming\Typora\typora-user-images\image-20230223165930878.png">
-<meta property="og:image" content="c:\Users\Sc\AppData\Roaming\Typora\typora-user-images\image-20230223165907531.png">
+<meta property="og:image" content="http://example.com/imgs/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/image-20230223165809983.png">
+<meta property="og:image" content="http://example.com/imgs/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/image-20230223165930878.png">
+<meta property="og:image" content="http://example.com/imgs/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/image-20230223165907531-16771445665921.png">
 <meta property="article:published_time" content="2023-02-23T08:51:49.000Z">
-<meta property="article:modified_time" content="2023-02-23T09:00:15.514Z">
+<meta property="article:modified_time" content="2023-02-23T09:29:26.669Z">
 <meta property="article:author" content="路茜">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="c:\Users\Sc\AppData\Roaming\Typora\typora-user-images\image-20230223165809983.png">
+<meta name="twitter:image" content="http://example.com/imgs/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/image-20230223165809983.png">
   
   
   
@@ -278,16 +278,16 @@
               <div class="markdown-body">
                 
                 <h1 id="错误-程序包R不存在”-的解决方法"><a href="#错误-程序包R不存在”-的解决方法" class="headerlink" title="错误: 程序包R不存在” 的解决方法"></a>错误: 程序包R不存在” 的解决方法</h1><p>错误: 程序包R不存在    setContentView(R.layout.main);</p>
-<p><img src="C:\Users\Sc\AppData\Roaming\Typora\typora-user-images\image-20230223165809983.png" srcset="/img/loading.gif" lazyload alt="image-20230223165809983"></p>
+<p><img src="/imgs/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/image-20230223165809983.png" srcset="/img/loading.gif" lazyload></p>
 <p>这种情况一般就是包导错了，或者说：<strong>您引用的R可能与包名不符</strong>。下面总结我的排查过程:</p>
 <ol>
 <li><p>有可能是：导入的包覆盖了真正要引用的R包，首先可以尝试删除你import android.R等这样的导入。然后rebuild project。但是我的项目里面并没有相关的导入。（没有解决我的问题）</p>
 </li>
 <li><p>检查AndroidManifest文件。我发现这里面我项目包的路径是不对的。我将它修改成我正确的包名。（问题还是没有解决，但是系统提示我可以导入相应的import android.R。之前连这样的提示都没有）</p>
-<p><img src="C:\Users\Sc\AppData\Roaming\Typora\typora-user-images\image-20230223165930878.png" srcset="/img/loading.gif" lazyload alt="image-20230223165930878"></p>
+<p><img src="/imgs/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/image-20230223165930878.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 <li><p>我又开始检查我的build.gradle文件。我发现还是包名的问题。我的appliactionId不对。他虽然是系统自动生成的，但是他应该是我的包名，可是他是一个错误的包名。</p>
-<p><img src="C:\Users\Sc\AppData\Roaming\Typora\typora-user-images\image-20230223165907531.png" srcset="/img/loading.gif" lazyload alt="image-20230223165907531"></p>
+<p><img src="/imgs/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/image-20230223165907531-16771445665921.png" srcset="/img/loading.gif" lazyload></p>
 <p>我经过上面的排查，我的错误成功消失。我认为是我在自己新建的项目上又new Module 导致的。虽然错误很奇怪，但是都是和包名有关系，以后遇到R不存在的错误，应该仔细点去排查包名相关的代码。</p>
 </li>
 </ol>
