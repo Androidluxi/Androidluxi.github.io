@@ -16,19 +16,26 @@
   <meta name="author" content="路茜">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Android服务">
-<meta property="og:url" content="http://example.com/2023/02/23/Android%E6%9C%8D%E5%8A%A1/index.html">
+    <meta name="description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AS快捷生成类（方法）注释">
+<meta property="og:url" content="http://example.com/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/index.html">
 <meta property="og:site_name" content="Android个人博客">
+<meta property="og:description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-23T09:01:16.000Z">
-<meta property="article:modified_time" content="2023-02-23T09:01:16.229Z">
+<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
+<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png">
+<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png">
+<meta property="article:published_time" content="2023-02-28T06:49:25.000Z">
+<meta property="article:modified_time" content="2023-02-28T06:52:14.368Z">
 <meta property="article:author" content="路茜">
+<meta property="article:tag" content="工具">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
   
   
   
-  <title>Android服务 - Android个人博客</title>
+  <title>AS快捷生成类（方法）注释 - Android个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Android服务"></span>
+            <span id="subtitle" data-typed-text="AS快捷生成类（方法）注释"></span>
           
         </div>
 
@@ -205,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-23 17:01" pubdate>
-          2023年2月23日 下午
+        <time datetime="2023-02-28 14:49" pubdate>
+          2023年2月28日 下午
         </time>
       </span>
     
@@ -217,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          580 字
         
       </span>
     
@@ -228,7 +235,7 @@
         
         
         
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -266,12 +273,42 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Android服务</h1>
+            <h1 style="display: none">AS快捷生成类（方法）注释</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h2 id="1、自定义类注释"><a href="#1、自定义类注释" class="headerlink" title="1、自定义类注释"></a>1、自定义类注释</h2><ol>
+<li>修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。</li>
+</ol>
+<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义类注释"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> luxi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@email</span> luxi2@mychery.com</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> $&#123;DATE&#125; $&#123;TIME&#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="2、自定义方法注释-（参考）"><a href="#2、自定义方法注释-（参考）" class="headerlink" title="2、自定义方法注释 （参考）"></a>2、自定义方法注释 （参考）</h2><ul>
+<li><p>创建Live Templates 选择 <code>Settings -&gt; Editor -&gt; Live Templates</code> ，点击右侧+号，首先新建一个 <code>Template Group</code>。</p>
+</li>
+<li><p>选中刚刚创建的<code>Template Group</code>，再点击+号新建一个 <code>Live Template</code></p>
+</li>
+<li><p>配置注释模板 依次填入以下内容</p>
+<p>Abbreviation(快捷命令) ：doc</p>
+<p>Description(说明) ：注释 </p>
+<p>Template text(模板内容) ：</p>
+<p> <strong>注意模板内容并没有少一个斜杠 &#x2F; ，就是以*号开头</strong></p>
+</li>
+</ul>
+<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义方法注释"></p>
+<p>模板内容（方法注释）</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span>   $desc$<br>* <span class="hljs-variable">@params</span> $params$ $return$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span>   $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
+
+<p>模板内容（类注释）</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span> $desc$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span> $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>点击下方 Define 按钮，选中 java</p>
+<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt=" Define 按钮位置"></p>
+</li>
+</ul>
+
                 
               </div>
             
@@ -279,6 +316,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
+      
+    </div>
   
 </div>
 
@@ -288,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Android服务</div>
-      <div>http://example.com/2023/02/23/Android服务/</div>
+      <div>AS快捷生成类（方法）注释</div>
+      <div>http://example.com/2023/02/28/AS快捷生成类（方法）注释/</div>
     </div>
     <div class="license-meta">
       
@@ -301,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月23日</div>
+          <div>2023年2月28日</div>
         </div>
       
       
@@ -333,9 +398,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/" title="AS快捷生成类（方法）注释">
+                      <a href="/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" title="Android权限申请">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AS快捷生成类（方法）注释</span>
+                        <span class="hidden-mobile">Android权限申请</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -343,8 +408,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/23/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/" title="错误：程序包R不存在">
-                        <span class="hidden-mobile">错误：程序包R不存在</span>
+                      <a href="/2023/02/23/Android%E6%9C%8D%E5%8A%A1/" title="Android服务">
+                        <span class="hidden-mobile">Android服务</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
