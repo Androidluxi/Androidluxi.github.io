@@ -16,26 +16,23 @@
   <meta name="author" content="路茜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+    <meta name="description" content="基于回调的事件处理机制就是老板给了任务让工人完成，工人完成之后需要向老板汇报，这个给的任务是抽象的，具体非分配到每个工人身上的任务不相同，但是工人完成之后都需要向老板汇报，这就是回调。 老板给出的任务是抽象的，所以应该是一个接口或者抽象类，我们需要对他进行实现，分成具体的任务，工人和老板是两个对象，老板里面需要收到工人完工的消息，工人需要告诉老板任务完成了，所以工人需要调用老板里面的方法。 老板是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AS快捷生成类（方法）注释">
-<meta property="og:url" content="http://example.com/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/index.html">
+<meta property="og:title" content="事件处理机制">
+<meta property="og:url" content="http://example.com/2023/03/03/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="Android个人博客">
-<meta property="og:description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+<meta property="og:description" content="基于回调的事件处理机制就是老板给了任务让工人完成，工人完成之后需要向老板汇报，这个给的任务是抽象的，具体非分配到每个工人身上的任务不相同，但是工人完成之后都需要向老板汇报，这就是回调。 老板给出的任务是抽象的，所以应该是一个接口或者抽象类，我们需要对他进行实现，分成具体的任务，工人和老板是两个对象，老板里面需要收到工人完工的消息，工人需要告诉老板任务完成了，所以工人需要调用老板里面的方法。 老板是">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png">
-<meta property="article:published_time" content="2023-02-28T06:49:25.000Z">
-<meta property="article:modified_time" content="2023-02-28T09:10:53.981Z">
+<meta property="og:image" content="http://example.com/imgs/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/152630_7Yke_2971691.png">
+<meta property="article:published_time" content="2023-03-03T08:02:15.000Z">
+<meta property="article:modified_time" content="2023-03-03T08:02:41.955Z">
 <meta property="article:author" content="路茜">
-<meta property="article:tag" content="工具">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
+<meta name="twitter:image" content="http://example.com/imgs/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/152630_7Yke_2971691.png">
   
   
   
-  <title>AS快捷生成类（方法）注释 - Android个人博客</title>
+  <title>事件处理机制 - Android个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AS快捷生成类（方法）注释"></span>
+            <span id="subtitle" data-typed-text="事件处理机制"></span>
           
         </div>
 
@@ -212,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-28 14:49" pubdate>
-          2023年2月28日 下午
+        <time datetime="2023-03-03 16:02" pubdate>
+          2023年3月3日 下午
         </time>
       </span>
     
@@ -224,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          580 字
+          980 字
         
       </span>
     
@@ -235,7 +232,7 @@
         
         
         
-          5 分钟
+          9 分钟
         
       </span>
     
@@ -273,39 +270,25 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">AS快捷生成类（方法）注释</h1>
+            <h1 style="display: none">事件处理机制</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1、自定义类注释"><a href="#1、自定义类注释" class="headerlink" title="1、自定义类注释"></a>1、自定义类注释</h2><ol>
-<li>修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。</li>
-</ol>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义类注释"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> luxi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@email</span> luxi2@mychery.com</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> $&#123;DATE&#125; $&#123;TIME&#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="2、自定义方法注释-（参考）"><a href="#2、自定义方法注释-（参考）" class="headerlink" title="2、自定义方法注释 （参考）"></a>2、自定义方法注释 （参考）</h2><ul>
-<li><p>创建Live Templates 选择 <code>Settings -&gt; Editor -&gt; Live Templates</code> ，点击右侧+号，首先新建一个 <code>Template Group</code>。</p>
-</li>
-<li><p>选中刚刚创建的<code>Template Group</code>，再点击+号新建一个 <code>Live Template</code></p>
-</li>
-<li><p>配置注释模板 依次填入以下内容</p>
-<p>Abbreviation(快捷命令) ：doc</p>
-<p>Description(说明) ：注释 </p>
-<p>Template text(模板内容) ：</p>
-<p> <strong>注意模板内容并没有少一个斜杠 &#x2F; ，就是以*号开头</strong></p>
-</li>
-</ul>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义方法注释"></p>
-<p>模板内容（方法注释）</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span>   $desc$<br>* <span class="hljs-variable">@params</span> $params$ $return$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span>   $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
-
-<p>模板内容（类注释）</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span> $desc$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span> $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
-
+                <h2 id="基于回调的事件处理机制"><a href="#基于回调的事件处理机制" class="headerlink" title="基于回调的事件处理机制"></a>基于回调的事件处理机制</h2><p>就是老板给了任务让工人完成，工人完成之后需要向老板汇报，这个给的任务是抽象的，具体非分配到每个工人身上的任务不相同，但是工人完成之后都需要向老板汇报，这就是回调。</p>
+<p>老板给出的任务是抽象的，所以应该是一个接口或者抽象类，我们需要对他进行实现，分成具体的任务，工人和老板是两个对象，老板里面需要收到工人完工的消息，工人需要告诉老板任务完成了，所以工人需要调用老板里面的方法。</p>
+<p>老板是客户端，提出要求，工人是服务端，完成需求，完成之后告诉老板。</p>
+<p><img src="/../imgs/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/152630_7Yke_2971691.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>除了我们子自定义的回调函数，Android里面还存在系统定义的回调函数，生命周期里面的函数都是回调函数，触摸事件也是回调函数，我们重写的方法就是回调方法，我们是客户端，系统是服务端，可以理解为：我告诉系统如果有人摸你，你就告诉我，我这边有相应的处理办法，现在真的有人摸了，然后系统就调用你写的处理方法了。</p>
 <ul>
-<li><p>点击下方 Define 按钮，选中 java</p>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt=" Define 按钮位置"></p>
+<li><h2 id="基于监听的事件处理机制"><a href="#基于监听的事件处理机制" class="headerlink" title="基于监听的事件处理机制"></a>基于监听的事件处理机制</h2><p>我认为基于监听事件的处理机制，就是给用户的每一个可操作控件增加一个监听器，当这个控件的状态发生变化之后，监听器就会针对这个变化，给出相应的处理方法。</p>
+<p>这是一种委派式的处理机制，事件本身不去处理，而是将处理委托给监听器。</p>
+<p>我们对于事件源的监听，有5种方法。</p>
+<p>一种就是匿名内部类，我认为一般是在控件较少的情况下使用，它无法复用，临时使用。</p>
+<p>一种是内部类的方式，我们定义一个内部类来实现view.OnclickListener，重写onclick方法。那么这个类就是一个监听器，我们可以在这个类里面写处理方法，当某个控件需要相应的处理方法时候，我们只需要将事件和监听器（内部类）绑定起来。</p>
+<p>一种是外部类的方式，我感觉应该是不建议使用的，它是定义一个类来实现OnClickListener，外部类不能够直接访问活动里面的控件，所以我们就必须通过构造方法将组件传入，这样会让代码不够简洁。感觉外部类和内部类非常相似，但是因为外部类不能直接访问活动里面控件的缘故，我觉得内部类使用更加方便。</p>
+<p>一种是在活动上绑定监听器，我们直接在活动上实现事件监听器，重写里面的方法，然后使用时，直接set····（this）就可以了。我认为这是使用起来最简洁的方法。</p>
+<p>一种是绑定到标签上，在xml的布局文件里面，有一个onClick标签，我们直接给他赋值，然后在活动里面创建一个以这个值为名字的方法，在里面实现监听事件。</p>
 </li>
 </ul>
 
@@ -326,7 +309,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Android%E5%B7%A5%E5%85%B7/" class="category-chain-item">Android工具</a>
+  <a href="/categories/Android%E5%AD%A6%E4%B9%A0/" class="category-chain-item">Android学习</a>
   
   
 
@@ -338,13 +321,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
-      
-    </div>
-  
 </div>
 
 
@@ -353,8 +329,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AS快捷生成类（方法）注释</div>
-      <div>http://example.com/2023/02/28/AS快捷生成类（方法）注释/</div>
+      <div>事件处理机制</div>
+      <div>http://example.com/2023/03/03/事件处理机制/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +342,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月28日</div>
+          <div>2023年3月3日</div>
         </div>
       
       
@@ -398,9 +374,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" title="Android权限申请">
+                      <a href="/2023/03/03/Application%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Application的使用">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Android权限申请</span>
+                        <span class="hidden-mobile">Application的使用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -408,8 +384,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/23/Android%E6%9C%8D%E5%8A%A1/" title="Android服务">
-                        <span class="hidden-mobile">Android服务</span>
+                      <a href="/2023/03/03/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/" title="Android基础知识_1">
+                        <span class="hidden-mobile">Android基础知识_1</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

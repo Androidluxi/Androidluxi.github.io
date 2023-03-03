@@ -16,26 +16,23 @@
   <meta name="author" content="路茜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+    <meta name="description" content="Android的sdk并不完善的地方，谷歌所以推出了一些开源库来支持开发，之所以不合并到sdk里面，一是sdk追求稳定性，版本更新时间一般也比较长，一些频繁更新和迭代的特性不方便放到sdk里面。二是为了向后兼容。 AndroidX是谷歌提供的新的Android支持库，代替了原来的Android Support Library。AndroidX里面包括了Jetpack 库，而且androidX会一直">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AS快捷生成类（方法）注释">
-<meta property="og:url" content="http://example.com/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/index.html">
+<meta property="og:title" content="Android基础知识_1">
+<meta property="og:url" content="http://example.com/2023/03/03/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/index.html">
 <meta property="og:site_name" content="Android个人博客">
-<meta property="og:description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+<meta property="og:description" content="Android的sdk并不完善的地方，谷歌所以推出了一些开源库来支持开发，之所以不合并到sdk里面，一是sdk追求稳定性，版本更新时间一般也比较长，一些频繁更新和迭代的特性不方便放到sdk里面。二是为了向后兼容。 AndroidX是谷歌提供的新的Android支持库，代替了原来的Android Support Library。AndroidX里面包括了Jetpack 库，而且androidX会一直">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png">
-<meta property="article:published_time" content="2023-02-28T06:49:25.000Z">
-<meta property="article:modified_time" content="2023-02-28T09:10:53.981Z">
+<meta property="og:image" content="http://example.com/imgs/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/20201119163449404.png">
+<meta property="article:published_time" content="2023-03-03T07:40:20.000Z">
+<meta property="article:modified_time" content="2023-03-03T07:41:43.472Z">
 <meta property="article:author" content="路茜">
-<meta property="article:tag" content="工具">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
+<meta name="twitter:image" content="http://example.com/imgs/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/20201119163449404.png">
   
   
   
-  <title>AS快捷生成类（方法）注释 - Android个人博客</title>
+  <title>Android基础知识_1 - Android个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AS快捷生成类（方法）注释"></span>
+            <span id="subtitle" data-typed-text="Android基础知识_1"></span>
           
         </div>
 
@@ -212,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-28 14:49" pubdate>
-          2023年2月28日 下午
+        <time datetime="2023-03-03 15:40" pubdate>
+          2023年3月3日 下午
         </time>
       </span>
     
@@ -224,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          580 字
+          337 字
         
       </span>
     
@@ -235,7 +232,7 @@
         
         
         
-          5 分钟
+          3 分钟
         
       </span>
     
@@ -273,41 +270,28 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">AS快捷生成类（方法）注释</h1>
+            <h1 style="display: none">Android基础知识_1</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1、自定义类注释"><a href="#1、自定义类注释" class="headerlink" title="1、自定义类注释"></a>1、自定义类注释</h2><ol>
-<li>修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。</li>
-</ol>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义类注释"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> luxi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@email</span> luxi2@mychery.com</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> $&#123;DATE&#125; $&#123;TIME&#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="2、自定义方法注释-（参考）"><a href="#2、自定义方法注释-（参考）" class="headerlink" title="2、自定义方法注释 （参考）"></a>2、自定义方法注释 （参考）</h2><ul>
-<li><p>创建Live Templates 选择 <code>Settings -&gt; Editor -&gt; Live Templates</code> ，点击右侧+号，首先新建一个 <code>Template Group</code>。</p>
-</li>
-<li><p>选中刚刚创建的<code>Template Group</code>，再点击+号新建一个 <code>Live Template</code></p>
-</li>
-<li><p>配置注释模板 依次填入以下内容</p>
-<p>Abbreviation(快捷命令) ：doc</p>
-<p>Description(说明) ：注释 </p>
-<p>Template text(模板内容) ：</p>
-<p> <strong>注意模板内容并没有少一个斜杠 &#x2F; ，就是以*号开头</strong></p>
-</li>
-</ul>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义方法注释"></p>
-<p>模板内容（方法注释）</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span>   $desc$<br>* <span class="hljs-variable">@params</span> $params$ $return$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span>   $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
-
-<p>模板内容（类注释）</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span> $desc$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span> $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
-
+                <p>Android的sdk并不完善的地方，谷歌所以推出了一些开源库来支持开发，之所以不合并到sdk里面，一是sdk追求稳定性，版本更新时间一般也比较长，一些频繁更新和迭代的特性不方便放到sdk里面。二是为了向后兼容。</p>
+<p>AndroidX是谷歌提供的新的Android支持库，代替了原来的Android Support Library。AndroidX里面包括了Jetpack</p>
+<p>库，而且androidX会一直持续更新。</p>
+<p>什么是Jetpack</p>
+<p>​		Jetpack是一个由多个库组成的套件，可以帮助开发者遵循最佳的做法，减少样板代码并编写各种Android版本和设备中一致运行的代码，让开发者可以将精力集中于真正的编码工作。</p>
+<p>我们为什么要使用Jetpack库呢？</p>
 <ul>
-<li><p>点击下方 Define 按钮，选中 java</p>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt=" Define 按钮位置"></p>
+<li><p>遵循最佳的做法</p>
+</li>
+<li><p>消除样板代码</p>
+</li>
+<li><p>减少不一致</p>
 </li>
 </ul>
+<p><img src="/../imgs/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/20201119163449404.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>​			</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -326,7 +310,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Android%E5%B7%A5%E5%85%B7/" class="category-chain-item">Android工具</a>
+  <a href="/categories/Android%E5%AD%A6%E4%B9%A0/" class="category-chain-item">Android学习</a>
   
   
 
@@ -338,13 +322,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
-      
-    </div>
-  
 </div>
 
 
@@ -353,8 +330,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AS快捷生成类（方法）注释</div>
-      <div>http://example.com/2023/02/28/AS快捷生成类（方法）注释/</div>
+      <div>Android基础知识_1</div>
+      <div>http://example.com/2023/03/03/Android基础知识-1/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +343,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月28日</div>
+          <div>2023年3月3日</div>
         </div>
       
       
@@ -398,9 +375,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" title="Android权限申请">
+                      <a href="/2023/03/03/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" title="事件处理机制">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Android权限申请</span>
+                        <span class="hidden-mobile">事件处理机制</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -408,8 +385,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/23/Android%E6%9C%8D%E5%8A%A1/" title="Android服务">
-                        <span class="hidden-mobile">Android服务</span>
+                      <a href="/2023/03/03/LiveData%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" title="LiveData的原理和使用">
+                        <span class="hidden-mobile">LiveData的原理和使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

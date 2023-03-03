@@ -16,26 +16,21 @@
   <meta name="author" content="路茜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+    <meta name="description" content="Application类首先我们应该明白Application类的作用，这是一个Android框架内置的一个系统组件，类似于Activity、service。 应用场景：我们可以通过继承Application的来实现应用程序层面的全局变量。  每个app默认有且只有一个Application实例，如果我们没有写一个Application子类来继承他，app就会创建一个默认的实例。 我们启动Appl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AS快捷生成类（方法）注释">
-<meta property="og:url" content="http://example.com/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/index.html">
+<meta property="og:title" content="Application的使用">
+<meta property="og:url" content="http://example.com/2023/03/03/Application%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Android个人博客">
-<meta property="og:description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+<meta property="og:description" content="Application类首先我们应该明白Application类的作用，这是一个Android框架内置的一个系统组件，类似于Activity、service。 应用场景：我们可以通过继承Application的来实现应用程序层面的全局变量。  每个app默认有且只有一个Application实例，如果我们没有写一个Application子类来继承他，app就会创建一个默认的实例。 我们启动Appl">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png">
-<meta property="article:published_time" content="2023-02-28T06:49:25.000Z">
-<meta property="article:modified_time" content="2023-02-28T09:10:53.981Z">
+<meta property="article:published_time" content="2023-03-03T08:03:37.000Z">
+<meta property="article:modified_time" content="2023-03-03T08:04:04.492Z">
 <meta property="article:author" content="路茜">
-<meta property="article:tag" content="工具">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
   
   
   
-  <title>AS快捷生成类（方法）注释 - Android个人博客</title>
+  <title>Application的使用 - Android个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AS快捷生成类（方法）注释"></span>
+            <span id="subtitle" data-typed-text="Application的使用"></span>
           
         </div>
 
@@ -212,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-28 14:49" pubdate>
-          2023年2月28日 下午
+        <time datetime="2023-03-03 16:03" pubdate>
+          2023年3月3日 下午
         </time>
       </span>
     
@@ -224,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          580 字
+          1.4k 字
         
       </span>
     
@@ -235,7 +230,7 @@
         
         
         
-          5 分钟
+          12 分钟
         
       </span>
     
@@ -273,41 +268,34 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">AS快捷生成类（方法）注释</h1>
+            <h1 style="display: none">Application的使用</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1、自定义类注释"><a href="#1、自定义类注释" class="headerlink" title="1、自定义类注释"></a>1、自定义类注释</h2><ol>
-<li>修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。</li>
+                <h1 id="Application类"><a href="#Application类" class="headerlink" title="Application类"></a>Application类</h1><p>首先我们应该明白Application类的作用，这是一个Android框架内置的一个系统组件，类似于Activity、service。</p>
+<p><strong>应用场景</strong>：我们可以通过继承Application的来实现应用程序层面的全局变量。</p>
+<ol>
+<li>每个app默认有且只有一个Application实例，如果我们没有写一个Application子类来继承他，app就会创建一个默认的实例。</li>
+<li>我们启动Application时候会创建一个进程ID，所有的activity都会在这个进程上运行。如果我们在Application里面初始化了全局变量，那么所有的Activty都可以很容易的获取到这些全局变量的值。</li>
+<li>Application的生命周期和App的生命周期是一致的，是一个天生的单例模式。</li>
+<li>Android程序的入口。开启app时候，首先就是实例化Application，然后才是Actvivty、service等。</li>
 </ol>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义类注释"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> luxi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@email</span> luxi2@mychery.com</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> $&#123;DATE&#125; $&#123;TIME&#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+<h2 id="常用方法："><a href="#常用方法：" class="headerlink" title="常用方法："></a>常用方法：</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">onCreate</span><span class="hljs-params">()</span></span>方法<br></code></pre></td></tr></table></figure>
 
-<h2 id="2、自定义方法注释-（参考）"><a href="#2、自定义方法注释-（参考）" class="headerlink" title="2、自定义方法注释 （参考）"></a>2、自定义方法注释 （参考）</h2><ul>
-<li><p>创建Live Templates 选择 <code>Settings -&gt; Editor -&gt; Live Templates</code> ，点击右侧+号，首先新建一个 <code>Template Group</code>。</p>
-</li>
-<li><p>选中刚刚创建的<code>Template Group</code>，再点击+号新建一个 <code>Live Template</code></p>
-</li>
-<li><p>配置注释模板 依次填入以下内容</p>
-<p>Abbreviation(快捷命令) ：doc</p>
-<p>Description(说明) ：注释 </p>
-<p>Template text(模板内容) ：</p>
-<p> <strong>注意模板内容并没有少一个斜杠 &#x2F; ，就是以*号开头</strong></p>
-</li>
-</ul>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义方法注释"></p>
-<p>模板内容（方法注释）</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span>   $desc$<br>* <span class="hljs-variable">@params</span> $params$ $return$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span>   $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
+<p>　　在Application创建的时候调用，一般用于初始化一些东西，如全局的对象，环境的配置等。oncreate()方法才是整个app的入口点。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">onConfigurationChanged</span><span class="hljs-params">(Configuration newConfig)</span></span>方法<br></code></pre></td></tr></table></figure>
 
-<p>模板内容（类注释）</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span> $desc$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span> $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>点击下方 Define 按钮，选中 java</p>
-<p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt=" Define 按钮位置"></p>
+<p>　　重写此方法可以监听APP一些配置信息的改变事件（如屏幕旋转等），当配置信息改变的时候会调用这个方法。在Manifest文件下的Activity标签（注意是Activity）里配置android:configChanges属性相应的配置属性，会使Activity在配置改变时候不会重启，只会执行onConfigurationChanged()方法。如：android:configChanges&#x3D;”keyboardHidden|orientation|screenSize”属性可以使Activity旋转时不重启。</p>
+<h2 id="Application类的使用"><a href="#Application类的使用" class="headerlink" title="Application类的使用"></a>Application类的使用</h2><p>　　要使用自定义的Application，首先就是要自己新建一个Application的子类，然后把它的名字写在manifest文件里面的application标签里的android:name属性就行，如我的Application子类名字是BaseApplication，则：</p>
+<pre><code class="hljs"> android:name=&quot;.BaseApplication&quot;
+</code></pre>
+<ol>
+<li><p>初始化资源<br>由于Application类是在APP启动的时候就启动，启动在所有Activity之前，所以可以使用它做资源的初始化操作，如图片资源初始化，WebView的预加载，推送服务的注册等等，注意不要执行耗时操作，会拖慢APP启动速度。</p>
 </li>
-</ul>
+<li><p>数据全局共享<br>可以设置一些全局的共享常量，如一些TAG，枚举值等。<br>可以设置一些全局使用的共享变量数据，如一个全局的Handler等等，但是要注意，这里缓存的变量数据的作用周期只在APP的生命周期，如果APP因为内存不足而结束的话，再开启这些数据就会消失，所以这里只能存储一些不重要的数据来使数据全APP共享，想要储存重要数据的话需要SharePreference、数据库或者文件存储等这些本地存储。<br>可以设置一些静态方法来让其他类调用，来使用Application里面的全局变量，如实现APP一键退出功能时候会用到。</p>
+</li>
+</ol>
 
                 
               </div>
@@ -326,7 +314,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Android%E5%B7%A5%E5%85%B7/" class="category-chain-item">Android工具</a>
+  <a href="/categories/Android%E5%AD%A6%E4%B9%A0/" class="category-chain-item">Android学习</a>
   
   
 
@@ -338,13 +326,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
-      
-    </div>
-  
 </div>
 
 
@@ -353,8 +334,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AS快捷生成类（方法）注释</div>
-      <div>http://example.com/2023/02/28/AS快捷生成类（方法）注释/</div>
+      <div>Application的使用</div>
+      <div>http://example.com/2023/03/03/Application的使用/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +347,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月28日</div>
+          <div>2023年3月3日</div>
         </div>
       
       
@@ -398,18 +379,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" title="Android权限申请">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Android权限申请</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/23/Android%E6%9C%8D%E5%8A%A1/" title="Android服务">
-                        <span class="hidden-mobile">Android服务</span>
+                      <a href="/2023/03/03/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" title="事件处理机制">
+                        <span class="hidden-mobile">事件处理机制</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
