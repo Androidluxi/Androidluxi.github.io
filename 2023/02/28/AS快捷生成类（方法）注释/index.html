@@ -16,23 +16,23 @@
   <meta name="author" content="路茜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+    <meta name="description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   &#x2F;**  * @auther luxi  * @email luxi2@mychery.com  * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125;  *&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AS快捷生成类（方法）注释">
 <meta property="og:url" content="http://example.com/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/index.html">
 <meta property="og:site_name" content="Android个人博客">
-<meta property="og:description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345&#x2F;** * @auther luxi * @email luxi2@mychery.com * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125; *&#x2F;">
+<meta property="og:description" content="1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   &#x2F;**  * @auther luxi  * @email luxi2@mychery.com  * @date $&amp;#123;DATE&amp;#125; $&amp;#123;TIME&amp;#125;  *&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png">
-<meta property="og:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/define%E4%BD%8D%E7%BD%AE.png">
+<meta property="og:image" content="http://example.com/imgs/example/8.jpg">
 <meta property="article:published_time" content="2023-02-28T06:49:25.000Z">
-<meta property="article:modified_time" content="2023-03-08T02:46:21.779Z">
+<meta property="article:modified_time" content="2023-03-17T16:50:56.789Z">
 <meta property="article:author" content="路茜">
 <meta property="article:tag" content="工具知识">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png">
+<meta name="twitter:image" content="http://example.com/imgs/example/8.jpg">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>AS快捷生成类（方法）注释 - Android个人博客</title>
@@ -44,6 +44,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -69,11 +71,17 @@
 
 
 
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -114,7 +122,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Android</strong>
+      <strong>每一个脚印，每一份积累，都是最宝贵的财富</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -224,6 +232,11 @@
           
   <div class="mt-3">
     
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        路茜
+      </span>
+    
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
@@ -239,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          580 字
+          574 字
         
       </span>
     
@@ -297,7 +310,11 @@
 <li>修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。</li>
 </ol>
 <p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义类注释"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@auther</span> luxi</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@email</span> luxi2@mychery.com</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> $&#123;DATE&#125; $&#123;TIME&#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @auther luxi
+ * @email luxi2@mychery.com
+ * @date $&#123;DATE&#125; $&#123;TIME&#125;
+ */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <h2 id="2、自定义方法注释-（参考）"><a href="#2、自定义方法注释-（参考）" class="headerlink" title="2、自定义方法注释 （参考）"></a>2、自定义方法注释 （参考）</h2><ul>
 <li><p>创建Live Templates 选择 <code>Settings -&gt; Editor -&gt; Live Templates</code> ，点击右侧+号，首先新建一个 <code>Template Group</code>。</p>
@@ -313,10 +330,19 @@
 </ul>
 <p><img src="/../imgs/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A.png" srcset="/img/loading.gif" lazyload alt="自定义方法注释"></p>
 <p>模板内容（方法注释）</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span>   $desc$<br>* <span class="hljs-variable">@params</span> $params$ $return$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span>   $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">*
+* @desc   $desc$
+* @params $params$ $return$
+* @author luxi
+* @date   $date$ $time$
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p>模板内容（类注释）</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs less">*<br>* <span class="hljs-variable">@desc</span> $desc$<br>* <span class="hljs-variable">@author</span> luxi<br>* <span class="hljs-variable">@date</span> $date$ $time$<br>*/<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">*
+* @desc $desc$
+* @author luxi
+* @date $date$ $time$
+*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <ul>
 <li><p>点击下方 Define 按钮，选中 java</p>
@@ -435,6 +461,15 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
           </article>
         </div>
       </div>
@@ -531,6 +566,30 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
   
   
 </div>
@@ -622,6 +681,8 @@
 </script>
 
 
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
   <script>Fluid.plugins.codeWidget();</script>
@@ -677,11 +738,18 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
   
-<script src="/js/star.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+<script src="/js/scrollAnimation.js"></script>
 
 
 

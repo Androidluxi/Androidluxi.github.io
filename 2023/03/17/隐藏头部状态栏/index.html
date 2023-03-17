@@ -16,20 +16,22 @@
   <meta name="author" content="路茜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Android隐藏头部状态栏1. onCreate 中通过代码隐藏（MainActivity）首先贴上官网介绍的方法 隐藏状态栏  | Android 开发者  | Android Developers 在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏 12345678View decorView &#x3D; getWindow().getDe">
+    <meta name="description" content="Android隐藏头部状态栏1. onCreate 中通过代码隐藏（MainActivity）首先贴上官网介绍的方法 隐藏状态栏  | Android 开发者  | Android Developers 在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏 View decorView &#x3D; getWindow().getDecorView(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐藏头部状态栏">
 <meta property="og:url" content="http://example.com/2023/03/17/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/index.html">
 <meta property="og:site_name" content="Android个人博客">
-<meta property="og:description" content="Android隐藏头部状态栏1. onCreate 中通过代码隐藏（MainActivity）首先贴上官网介绍的方法 隐藏状态栏  | Android 开发者  | Android Developers 在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏 12345678View decorView &#x3D; getWindow().getDe">
+<meta property="og:description" content="Android隐藏头部状态栏1. onCreate 中通过代码隐藏（MainActivity）首先贴上官网介绍的方法 隐藏状态栏  | Android 开发者  | Android Developers 在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏 View decorView &#x3D; getWindow().getDecorView(">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/1.jpg">
+<meta property="og:image" content="http://example.com/imgs/example/img_2.jpg">
 <meta property="article:published_time" content="2023-03-17T07:38:39.000Z">
-<meta property="article:modified_time" content="2023-03-17T07:44:20.995Z">
+<meta property="article:modified_time" content="2023-03-17T16:38:41.355Z">
 <meta property="article:author" content="路茜">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/1.jpg">
+<meta name="twitter:image" content="http://example.com/imgs/example/img_2.jpg">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>隐藏头部状态栏 - Android个人博客</title>
@@ -41,6 +43,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -66,11 +70,17 @@
 
 
 
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -111,7 +121,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Android</strong>
+      <strong>每一个脚印，每一份积累，都是最宝贵的财富</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -221,6 +231,11 @@
           
   <div class="mt-3">
     
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        路茜
+      </span>
+    
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
@@ -236,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.2k 字
         
       </span>
     
@@ -293,27 +308,39 @@
                 <h1 id="Android隐藏头部状态栏"><a href="#Android隐藏头部状态栏" class="headerlink" title="Android隐藏头部状态栏"></a>Android隐藏头部状态栏</h1><h3 id="1-onCreate-中通过代码隐藏（MainActivity）"><a href="#1-onCreate-中通过代码隐藏（MainActivity）" class="headerlink" title="1. onCreate 中通过代码隐藏（MainActivity）"></a>1. onCreate 中通过代码隐藏（MainActivity）</h3><p>首先贴上官网介绍的方法</p>
 <p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/training/system-ui/status?hl=zh-cn#41">隐藏状态栏  | Android 开发者  | Android Developers</a></p>
 <p>在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">View</span> <span class="hljs-variable">decorView</span> <span class="hljs-operator">=</span> getWindow().getDecorView();<br><span class="hljs-comment">// Hide the status bar.</span><br><span class="hljs-type">int</span> <span class="hljs-variable">uiOptions</span> <span class="hljs-operator">=</span> View.SYSTEM_UI_FLAG_FULLSCREEN;<br>decorView.setSystemUiVisibility(uiOptions);<br><span class="hljs-comment">// Remember that you should never show the action bar if the</span><br><span class="hljs-comment">// status bar is hidden, so hide that too if necessary.</span><br><span class="hljs-type">ActionBar</span> <span class="hljs-variable">actionBar</span> <span class="hljs-operator">=</span> getActionBar();<br>actionBar.hide();<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">View</span> decorView <span class="token operator">=</span> <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDecorView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Hide the status bar.</span>
+<span class="token keyword">int</span> uiOptions <span class="token operator">=</span> <span class="token class-name">View</span><span class="token punctuation">.</span><span class="token constant">SYSTEM_UI_FLAG_FULLSCREEN</span><span class="token punctuation">;</span>
+decorView<span class="token punctuation">.</span><span class="token function">setSystemUiVisibility</span><span class="token punctuation">(</span>uiOptions<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Remember that you should never show the action bar if the</span>
+<span class="token comment">// status bar is hidden, so hide that too if necessary.</span>
+<span class="token class-name">ActionBar</span> actionBar <span class="token operator">=</span> <span class="token function">getActionBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+actionBar<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p>存下以下错误：getActionBar的值是null。</p>
 <p><img src="/../imgs/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/1.jpg" srcset="/img/loading.gif" lazyload></p>
 <p><strong>如果Activity继承了Appcompat，则必须使用getSupportActionBar()来获取ActionBar</strong></p>
 <p>我实验之后发现这部分代码有部分废弃了。具体作用也不是很明确。</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">View decorView <span class="hljs-operator">=</span> getWindow().getDecorView()<span class="hljs-comment">;</span><br>int uiOptions <span class="hljs-operator">=</span> View.SYSTEM_UI_FLAG_FULLSCREEN<span class="hljs-comment">;</span><br>decorView.setSystemUiVisibility(uiOptions)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">View decorView &#x3D; getWindow().getDecorView();
+int uiOptions &#x3D; View.SYSTEM_UI_FLAG_FULLSCREEN;
+decorView.setSystemUiVisibility(uiOptions);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <ol>
 <li><p>MainActivity 继承 Activity 时<br>如果在 onCreate –&gt; setContentView 方法之后加则会报错。<br>onCreate –&gt; setContentView 方法前加入以下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">requestWindowFeature(Window.FEATURE_NO_TITLE);<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token function">requestWindowFeature</span><span class="token punctuation">(</span><span class="token class-name">Window</span><span class="token punctuation">.</span><span class="token constant">FEATURE_NO_TITLE</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 </li>
 <li><p>MainActivity 继承 AppCompatActivity 时</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ActionBar</span> <span class="hljs-variable">actionBar</span> <span class="hljs-operator">=</span> getSupportActionBar();<br>        <span class="hljs-keyword">if</span> (actionBar!=<span class="hljs-literal">null</span>) &#123;<br>            actionBar.hide();<br>        &#125;<br></code></pre></td></tr></table></figure></li>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ActionBar</span> actionBar <span class="token operator">=</span> <span class="token function">getSupportActionBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>actionBar<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            actionBar<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></li>
 </ol>
 <h3 id="2-布局清单中通过-Activity-theme-隐藏（AndroidMainfest）"><a href="#2-布局清单中通过-Activity-theme-隐藏（AndroidMainfest）" class="headerlink" title="2.布局清单中通过 Activity theme 隐藏（AndroidMainfest）"></a>2.布局清单中通过 Activity theme 隐藏（AndroidMainfest）</h3><p>这种方式，MainActivity 继承 Activity 或 AppCompatActivity 都可用</p>
 <p>在 res —&gt; values —&gt; styles —&gt; 中加入以下代码：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;HideStyle&quot;</span> <span class="hljs-attr">parent</span>=<span class="hljs-string">&quot;Theme.AppCompat.Light.NoActionBar&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>HideStyle<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Theme.AppCompat.Light.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
 <p>然后在需要隐藏标题栏的activity标签声明中，加入以下代码即可；</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">android:theme=&quot;@style/HideStyle&quot;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">android:theme="@style/HideStyle"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
 
                 
@@ -414,6 +441,15 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
           </article>
         </div>
       </div>
@@ -510,6 +546,30 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
   
   
 </div>
@@ -601,6 +661,8 @@
 </script>
 
 
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
   <script>Fluid.plugins.codeWidget();</script>
@@ -656,11 +718,18 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
   
-<script src="/js/star.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+<script src="/js/scrollAnimation.js"></script>
 
 
 

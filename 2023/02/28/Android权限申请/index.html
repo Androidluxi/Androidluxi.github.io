@@ -16,18 +16,22 @@
   <meta name="author" content="路茜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.可以在AndroidManifest里面注册的权限：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+    <meta name="description" content="1.可以在AndroidManifest里面注册的权限：&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCEPT_HANDOVER&quot; &#x2F;&gt; &lt;!-- 允许呼应用继续在另一个应用中启动的呼叫 --&gt; &lt;uses-permission android:name&#x3D;&amp;qu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android权限申请">
 <meta property="og:url" content="http://example.com/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/index.html">
 <meta property="og:site_name" content="Android个人博客">
-<meta property="og:description" content="1.可以在AndroidManifest里面注册的权限：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+<meta property="og:description" content="1.可以在AndroidManifest里面注册的权限：&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCEPT_HANDOVER&quot; &#x2F;&gt; &lt;!-- 允许呼应用继续在另一个应用中启动的呼叫 --&gt; &lt;uses-permission android:name&#x3D;&amp;qu">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/imgs/example/6.jpg">
 <meta property="article:published_time" content="2023-02-28T09:06:33.000Z">
-<meta property="article:modified_time" content="2023-02-28T09:07:21.379Z">
+<meta property="article:modified_time" content="2023-03-17T16:51:32.971Z">
 <meta property="article:author" content="路茜">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/imgs/example/6.jpg">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Android权限申请 - Android个人博客</title>
@@ -39,6 +43,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -64,11 +70,17 @@
 
 
 
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -109,7 +121,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Android</strong>
+      <strong>每一个脚印，每一份积累，都是最宝贵的财富</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -219,6 +231,11 @@
           
   <div class="mt-3">
     
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        路茜
+      </span>
+    
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
@@ -245,7 +262,7 @@
         
         
         
-          156 分钟
+          162 分钟
         
       </span>
     
@@ -288,14 +305,320 @@
             
               <div class="markdown-body">
                 
-                <h4 id="1-可以在AndroidManifest里面注册的权限："><a href="#1-可以在AndroidManifest里面注册的权限：" class="headerlink" title="1.可以在AndroidManifest里面注册的权限："></a>1.可以在AndroidManifest里面注册的权限：</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCEPT_HANDOVER&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许呼应用继续在另一个应用中启动的呼叫 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_BACKGROUND_LOCATION&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用访问后台的位置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_BLOBS_ACROSS_USERS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序访问跨用户的数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_CHECKIN_PROPERTIES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许阅读/写入检查数据库中的&quot;属性&quot;表，以更改上传的值 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_COARSE_LOCATION&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序访问大致位置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_FINE_LOCATION&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用访问精确位置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_LOCATION_EXTRA_COMMANDS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许程序访问额外的定位提供者指令 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_MEDIA_LOCATION&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序访问用户共享集合中持续存在的任何地理位置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序访问有关网络的信息 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_NOTIFICATION_POLICY&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 希望访问通知策略的应用程序的标记权限 此权限不支持托管配置文件 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_WIFI_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序访问有关 Wi-Fi 网络的信息 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCOUNT_MANAGER&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序调用到帐户授权人 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACTIVITY_RECOGNITION&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序识别身体活动 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ADD_VOICEMAIL&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序向系统添加语音信箱 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ANSWER_PHONE_CALLS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序接听来电 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BATTERY_STATS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序收集电池统计数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BIND_ACCESSIBILITY_SERVICE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 确保只有系统可以绑定它 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BIND_APPWIDGET&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序告诉AppWidget服务哪些应用程序可以访问AppWidget数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BIND_CARRIER_SERVICES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许与运营商应用中的服务绑定的系统过程将获得此权限 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BIND_COMPANION_DEVICE_SERVICE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 任何 s 都必须确保只有系统才能与系统结合 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BIND_CONTROLS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许系统UI请求第三方控制 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BIND_DEVICE_ADMIN&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 设备管理接收器必须要求 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BLUETOOTH&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序连接到配对蓝牙设备 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BLUETOOTH_ADMIN&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序发现和配对蓝牙设备 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BLUETOOTH_ADVERTISE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 需要能够向附近的蓝牙设备做广告 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BLUETOOTH_CONNECT&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 需要能够连接到配对蓝牙设备 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BLUETOOTH_PRIVILEGED&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序在不进行用户交互的情况下对蓝牙设备进行配对，并允许或不允许电话簿访问或消息访问 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BLUETOOTH_SCAN&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 需要能够发现和配对附近的蓝牙设备 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BODY_SENSORS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序从用户用来测量体内发生的情况（如心率）的传感器访问数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BROADCAST_PACKAGE_REMOVED&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序广播已删除应用程序包的通知 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BROADCAST_SMS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序广播短信收据通知 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BROADCAST_STICKY&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序广播粘性意图 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.BROADCAST_WAP_PUSH&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序广播 WAP 推送接收通知 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CALL_COMPANION_APP&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许实现 API 的应用有资格作为呼叫伴侣应用启用 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CALL_PHONE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序启动电话呼叫，而无需通过拨号器用户界面，以便用户确认呼叫 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CALL_PRIVILEGED&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序拨打任何电话号码（包括紧急号码），而无需通过 Dialer 用户界面为用户确认已放置的呼叫 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CAMERA&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 需要能够访问摄像机设备 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CAPTURE_AUDIO_OUTPUT&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序捕获音频输出 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CHANGE_COMPONENT_ENABLED_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序更改应用程序组件（其自身除外）是否启用 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CHANGE_CONFIGURATION&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序修改当前配置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CHANGE_NETWORK_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序更改网络连接状态 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CHANGE_WIFI_MULTICAST_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序进入 Wi-Fi 多播模式 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CHANGE_WIFI_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序更改 Wi-Fi 连接状态 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CLEAR_APP_CACHE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序清除设备上所有已安装应用程序的缓存 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.CONTROL_LOCATION_UPDATES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许启用/禁用来自收音机的位置更新通知 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.DELETE_CACHE_FILES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 删除应用缓存文件的旧权限不再使用 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.DELETE_PACKAGES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序删除包 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.DIAGNOSTIC&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许将 RW 应用到诊断资源 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.DISABLE_KEYGUARD&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 如果密钥防护系统不安全，允许应用程序禁用 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.DUMP&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序从系统服务中检索状态转储信息 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.允许应用程序扩展或折叠状态栏&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- EXPAND_STATUS_BAR --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.FACTORY_TEST&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 作为制造商测试应用程序运行 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.FOREGROUND_SERVICE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许使用常规应用程序 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.GET_ACCOUNTS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许访问帐户服务中的帐户列表 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.GET_PACKAGE_SIZE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序找出任何包所使用的空间 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.GLOBAL_SEARCH&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 此权限可用于内容提供商，以便全球搜索系统访问其数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.HIDE_OVERLAY_WINDOWS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用在上面绘制非系统覆盖窗口 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.HIGH_SAMPLING_RATE_SENSORS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用访问采样率大于 200 Hz 的传感器数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INSTALL_LOCATION_PROVIDER&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序将位置提供商安装到位置管理器中 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INSTALL_PACKAGES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序安装包 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INSTALL_SHORTCUT&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序在启动器中安装快捷方式 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INSTANT_APP_FOREGROUND_SERVICE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许即时应用创建前景服务 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INTERACT_ACROSS_PROFILES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许在同一配置文件组中跨配置文件进行交互 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序打开网络 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.KILL_BACKGROUND_PROCESSES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序调用 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.LOADER_USAGE_STATS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许数据装载机读取包的访问日志。访问日志包含随着时间推移引用的页面集。 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.LOCATION_HARDWARE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序在硬件中使用位置功能 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MANAGE_DOCUMENTS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序管理对文档的访问，通常作为文档拾取器的一部分 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MANAGE_EXTERNAL_STORAGE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序在范围存储中广泛访问外部存储 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MANAGE_MEDIA&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序在未经用户确认的情况下修改和删除此设备或任何连接存储设备上的媒体文件 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MANAGE_ONGOING_CALLS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许查询持续呼叫详细信息并管理持续呼叫 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MANAGE_OWN_CALLS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许通过自我管理的 API 管理自己的呼叫的呼叫应用程序 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MEDIA_CONTENT_CONTROL&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序知道正在播放的内容并控制其播放 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序修改全球音频设置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MODIFY_PHONE_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许修改电话状态 - 打开电源 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MOUNT_FORMAT_FILESYSTEMS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许为可移动存储格式化文件系统 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许安装和卸载文件系统以进行可拆卸存储 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.NFC&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序在 NFC 上执行 I/O 操作 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.NFC_PREFERRED_PAYMENT_INFO&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许申请接收 NFC 首选支付服务信息 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.NFC_TRANSACTION_EVENT&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序接收 NFC 交易事件 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.PACKAGE_USAGE_STATS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序收集组件使用情况统计 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.QUERY_ALL_PACKAGES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许查询设备上的任何正常应用 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_CALENDAR&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取用户的日历数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_CALL_LOG&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取用户的通话记录。 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_CONTACTS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取用户的联系人数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序从外部存储中读取 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_LOGS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取低级系统日志文件 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_PHONE_NUMBERS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许读取设备的电话号码 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_PHONE_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 仅允许阅读访问电话状态，包括当前的蜂窝网络信息、任何持续呼叫的状态 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_PRECISE_PHONE_STATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许阅读访问精确的手机状态 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_SMS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取短信 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_SYNC_SETTINGS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取同步设置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_SYNC_STATS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取同步统计数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_VOICEMAIL&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序在系统中读取语音信箱 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REBOOT&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 需要能够重新启动设备 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序在系统完成启动后接收广播 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.RECEIVE_MMS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序监控传入的彩信 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.RECEIVE_SMS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序接收短信 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.RECEIVE_WAP_PUSH&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序接收 WAP 推送消息 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.RECORD_AUDIO&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序录制音频 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_COMPANION_PROFILE_WATCH&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用请求通过&quot;手表&quot;与设备关联 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许配套应用在后台运行 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_COMPANION_START_FOREGROUND_SERVICES_FROM_BACKGROUND&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许配套应用从后台开始前景服务 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许配套应用在后台使用数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_DELETE_PACKAGES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序请求删除包 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 申请必须持有才能使用的权 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_INSTALL_PACKAGES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序请求安装包 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_OBSERVE_COMPANION_DEVICE_PRESENCE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序订阅有关其关联配套设备的存在状态更改的通知 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.REQUEST_PASSWORD_COMPLEXITY&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序请求屏幕锁的复杂性，并提示用户将屏幕锁更新到一定的复杂性级别 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SCHEDULE_EXACT_ALARM&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序使用精确的报警 API --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SEND_RESPOND_VIA_MESSAGE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序 （电话） 向其他应用程序发送请求，以便在来电期间处理响应消息操作 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SEND_SMS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序发送短信 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_ALARM&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序广播意图为用户设置闹钟 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_ALWAYS_FINISH&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序控制在后台后立即完成活动 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_ANIMATION_SCALE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 修改全局动画缩放因子 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_DEBUG_APP&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 配置调试应用程序 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_PROCESS_LIMIT&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序设置可以运行的最大数量（不需要）应用程序过程 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_TIME&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序直接设置系统时间 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_TIME_ZONE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序直接设置系统时区 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_WALLPAPER&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序设置壁纸 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SET_WALLPAPER_HINTS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序设置壁纸提示 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SIGNAL_PERSISTENT_PROCESSES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序请求向所有持久性过程发送信号 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序随时从后台开始前景服务 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.START_VIEW_PERMISSION_USAGE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许持有人启动应用程序的权限使用屏幕 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.STATUS_BAR&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序打开、关闭或禁用状态栏及其图标 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.SYSTEM_ALERT_WINDOW&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用使用该类型创建窗口，该类型显示在所有其他应用的顶部 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.TRANSMIT_IR&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 如果可用，允许使用设备的红外发射器 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.UPDATE_DEVICE_STATS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序更新设备统计数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序通过该应用程序指示应用更新不需要用户操作 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.USE_BIOMETRIC&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用使用设备支持的生物识别模式 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.USE_ICC_AUTH_WITH_DEVICE_IDENTIFIER&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许读取设备标识符并使用基于 ICC 的身份验证（如 EAP-AKA） --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.USE_SIP&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序使用 SIP 服务 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.UWB_RANGING&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 需要能够使用超宽带的设备 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.VIBRATE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许访问振动器 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WAKE_LOCK&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许使用电源经理唤醒锁来防止处理器睡觉或屏幕变暗 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_APN_SETTINGS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序编写 apn 设置并读取现有 apn 设置的敏感字段（如用户和密码） --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_CALENDAR&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序编写用户的日历数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_CALL_LOG&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序编写（但未读取）用户的呼叫日志数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_CONTACTS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序编写用户的联系人数据 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序写入外部存储。 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_GSERVICES&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序修改 Google 服务地图 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_SECURE_SETTINGS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取或编写安全系统设置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_SETTINGS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序读取或编写系统设置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_SYNC_SETTINGS&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序编写同步设置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_VOICEMAIL&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!-- 允许应用程序修改和删除系统中现有的语音信箱 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
+                <h4 id="1-可以在AndroidManifest里面注册的权限："><a href="#1-可以在AndroidManifest里面注册的权限：" class="headerlink" title="1.可以在AndroidManifest里面注册的权限："></a>1.可以在AndroidManifest里面注册的权限：</h4><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCEPT_HANDOVER&quot; &#x2F;&gt;
+&lt;!-- 允许呼应用继续在另一个应用中启动的呼叫 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_BACKGROUND_LOCATION&quot;&#x2F;&gt;
+&lt;!-- 允许应用访问后台的位置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_BLOBS_ACROSS_USERS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序访问跨用户的数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_CHECKIN_PROPERTIES&quot; &#x2F;&gt;
+&lt;!-- 允许阅读&#x2F;写入检查数据库中的&quot;属性&quot;表，以更改上传的值 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_COARSE_LOCATION&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序访问大致位置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_FINE_LOCATION&quot; &#x2F;&gt;
+&lt;!-- 允许应用访问精确位置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_LOCATION_EXTRA_COMMANDS&quot; &#x2F;&gt;
+&lt;!-- 允许程序访问额外的定位提供者指令 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_MEDIA_LOCATION&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序访问用户共享集合中持续存在的任何地理位置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_NETWORK_STATE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序访问有关网络的信息 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_NOTIFICATION_POLICY&quot; &#x2F;&gt;
+&lt;!-- 希望访问通知策略的应用程序的标记权限 此权限不支持托管配置文件 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCESS_WIFI_STATE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序访问有关 Wi-Fi 网络的信息 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCOUNT_MANAGER&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序调用到帐户授权人 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ACTIVITY_RECOGNITION&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序识别身体活动 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ADD_VOICEMAIL&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序向系统添加语音信箱 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.ANSWER_PHONE_CALLS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序接听来电 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BATTERY_STATS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序收集电池统计数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BIND_ACCESSIBILITY_SERVICE&quot; &#x2F;&gt;
+&lt;!-- 确保只有系统可以绑定它 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BIND_APPWIDGET&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序告诉AppWidget服务哪些应用程序可以访问AppWidget数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BIND_CARRIER_SERVICES&quot; &#x2F;&gt;
+&lt;!-- 允许与运营商应用中的服务绑定的系统过程将获得此权限 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BIND_COMPANION_DEVICE_SERVICE&quot; &#x2F;&gt;
+&lt;!-- 任何 s 都必须确保只有系统才能与系统结合 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BIND_CONTROLS&quot; &#x2F;&gt;
+&lt;!-- 允许系统UI请求第三方控制 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BIND_DEVICE_ADMIN&quot; &#x2F;&gt;
+&lt;!-- 设备管理接收器必须要求 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BLUETOOTH&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序连接到配对蓝牙设备 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BLUETOOTH_ADMIN&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序发现和配对蓝牙设备 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BLUETOOTH_ADVERTISE&quot; &#x2F;&gt;
+&lt;!-- 需要能够向附近的蓝牙设备做广告 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BLUETOOTH_CONNECT&quot; &#x2F;&gt;
+&lt;!-- 需要能够连接到配对蓝牙设备 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BLUETOOTH_PRIVILEGED&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序在不进行用户交互的情况下对蓝牙设备进行配对，并允许或不允许电话簿访问或消息访问 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BLUETOOTH_SCAN&quot; &#x2F;&gt;
+&lt;!-- 需要能够发现和配对附近的蓝牙设备 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BODY_SENSORS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序从用户用来测量体内发生的情况（如心率）的传感器访问数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BROADCAST_PACKAGE_REMOVED&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序广播已删除应用程序包的通知 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BROADCAST_SMS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序广播短信收据通知 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BROADCAST_STICKY&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序广播粘性意图 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.BROADCAST_WAP_PUSH&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序广播 WAP 推送接收通知 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CALL_COMPANION_APP&quot; &#x2F;&gt;
+&lt;!-- 允许实现 API 的应用有资格作为呼叫伴侣应用启用 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CALL_PHONE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序启动电话呼叫，而无需通过拨号器用户界面，以便用户确认呼叫 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CALL_PRIVILEGED&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序拨打任何电话号码（包括紧急号码），而无需通过 Dialer 用户界面为用户确认已放置的呼叫 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CAMERA&quot; &#x2F;&gt;
+&lt;!-- 需要能够访问摄像机设备 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CAPTURE_AUDIO_OUTPUT&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序捕获音频输出 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CHANGE_COMPONENT_ENABLED_STATE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序更改应用程序组件（其自身除外）是否启用 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CHANGE_CONFIGURATION&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序修改当前配置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CHANGE_NETWORK_STATE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序更改网络连接状态 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CHANGE_WIFI_MULTICAST_STATE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序进入 Wi-Fi 多播模式 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CHANGE_WIFI_STATE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序更改 Wi-Fi 连接状态 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CLEAR_APP_CACHE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序清除设备上所有已安装应用程序的缓存 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.CONTROL_LOCATION_UPDATES&quot; &#x2F;&gt;
+&lt;!-- 允许启用&#x2F;禁用来自收音机的位置更新通知 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.DELETE_CACHE_FILES&quot; &#x2F;&gt;
+&lt;!-- 删除应用缓存文件的旧权限不再使用 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.DELETE_PACKAGES&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序删除包 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.DIAGNOSTIC&quot; &#x2F;&gt;
+&lt;!-- 允许将 RW 应用到诊断资源 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.DISABLE_KEYGUARD&quot; &#x2F;&gt;
+&lt;!-- 如果密钥防护系统不安全，允许应用程序禁用 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.DUMP&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序从系统服务中检索状态转储信息 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.允许应用程序扩展或折叠状态栏&quot; &#x2F;&gt;
+&lt;!-- EXPAND_STATUS_BAR --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.FACTORY_TEST&quot; &#x2F;&gt;
+&lt;!-- 作为制造商测试应用程序运行 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.FOREGROUND_SERVICE&quot; &#x2F;&gt;
+&lt;!-- 允许使用常规应用程序 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.GET_ACCOUNTS&quot; &#x2F;&gt;
+&lt;!-- 允许访问帐户服务中的帐户列表 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.GET_PACKAGE_SIZE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序找出任何包所使用的空间 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.GLOBAL_SEARCH&quot; &#x2F;&gt;
+&lt;!-- 此权限可用于内容提供商，以便全球搜索系统访问其数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.HIDE_OVERLAY_WINDOWS&quot; &#x2F;&gt;
+&lt;!-- 允许应用在上面绘制非系统覆盖窗口 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.HIGH_SAMPLING_RATE_SENSORS&quot; &#x2F;&gt;
+&lt;!-- 允许应用访问采样率大于 200 Hz 的传感器数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.INSTALL_LOCATION_PROVIDER&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序将位置提供商安装到位置管理器中 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.INSTALL_PACKAGES&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序安装包 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.INSTALL_SHORTCUT&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序在启动器中安装快捷方式 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.INSTANT_APP_FOREGROUND_SERVICE&quot; &#x2F;&gt;
+&lt;!-- 允许即时应用创建前景服务 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.INTERACT_ACROSS_PROFILES&quot; &#x2F;&gt;
+&lt;!-- 允许在同一配置文件组中跨配置文件进行交互 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.INTERNET&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序打开网络 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.KILL_BACKGROUND_PROCESSES&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序调用 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.LOADER_USAGE_STATS&quot; &#x2F;&gt;
+&lt;!-- 允许数据装载机读取包的访问日志。访问日志包含随着时间推移引用的页面集。 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.LOCATION_HARDWARE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序在硬件中使用位置功能 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MANAGE_DOCUMENTS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序管理对文档的访问，通常作为文档拾取器的一部分 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MANAGE_EXTERNAL_STORAGE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序在范围存储中广泛访问外部存储 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MANAGE_MEDIA&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序在未经用户确认的情况下修改和删除此设备或任何连接存储设备上的媒体文件 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MANAGE_ONGOING_CALLS&quot; &#x2F;&gt;
+&lt;!-- 允许查询持续呼叫详细信息并管理持续呼叫 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MANAGE_OWN_CALLS&quot; &#x2F;&gt;
+&lt;!-- 允许通过自我管理的 API 管理自己的呼叫的呼叫应用程序 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MEDIA_CONTENT_CONTROL&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序知道正在播放的内容并控制其播放 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序修改全球音频设置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MODIFY_PHONE_STATE&quot; &#x2F;&gt;
+&lt;!-- 允许修改电话状态 - 打开电源 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MOUNT_FORMAT_FILESYSTEMS&quot; &#x2F;&gt;
+&lt;!-- 允许为可移动存储格式化文件系统 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot; &#x2F;&gt;
+&lt;!-- 允许安装和卸载文件系统以进行可拆卸存储 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.NFC&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序在 NFC 上执行 I&#x2F;O 操作 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.NFC_PREFERRED_PAYMENT_INFO&quot; &#x2F;&gt;
+&lt;!-- 允许申请接收 NFC 首选支付服务信息 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.NFC_TRANSACTION_EVENT&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序接收 NFC 交易事件 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.PACKAGE_USAGE_STATS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序收集组件使用情况统计 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.QUERY_ALL_PACKAGES&quot; &#x2F;&gt;
+&lt;!-- 允许查询设备上的任何正常应用 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_CALENDAR&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取用户的日历数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_CALL_LOG&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取用户的通话记录。 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_CONTACTS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取用户的联系人数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_EXTERNAL_STORAGE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序从外部存储中读取 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_LOGS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取低级系统日志文件 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_PHONE_NUMBERS&quot; &#x2F;&gt;
+&lt;!-- 允许读取设备的电话号码 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_PHONE_STATE&quot; &#x2F;&gt;
+&lt;!-- 仅允许阅读访问电话状态，包括当前的蜂窝网络信息、任何持续呼叫的状态 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_PRECISE_PHONE_STATE&quot; &#x2F;&gt;
+&lt;!-- 允许阅读访问精确的手机状态 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_SMS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取短信 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_SYNC_SETTINGS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取同步设置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_SYNC_STATS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取同步统计数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_VOICEMAIL&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序在系统中读取语音信箱 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REBOOT&quot; &#x2F;&gt;
+&lt;!-- 需要能够重新启动设备 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序在系统完成启动后接收广播 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.RECEIVE_MMS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序监控传入的彩信 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.RECEIVE_SMS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序接收短信 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.RECEIVE_WAP_PUSH&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序接收 WAP 推送消息 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.RECORD_AUDIO&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序录制音频 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_COMPANION_PROFILE_WATCH&quot; &#x2F;&gt;
+&lt;!-- 允许应用请求通过&quot;手表&quot;与设备关联 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND&quot; &#x2F;&gt;
+&lt;!-- 允许配套应用在后台运行 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_COMPANION_START_FOREGROUND_SERVICES_FROM_BACKGROUND&quot; &#x2F;&gt;
+&lt;!-- 允许配套应用从后台开始前景服务 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND&quot; &#x2F;&gt;
+&lt;!-- 允许配套应用在后台使用数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_DELETE_PACKAGES&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序请求删除包 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS&quot; &#x2F;&gt;
+&lt;!-- 申请必须持有才能使用的权 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_INSTALL_PACKAGES&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序请求安装包 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_OBSERVE_COMPANION_DEVICE_PRESENCE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序订阅有关其关联配套设备的存在状态更改的通知 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.REQUEST_PASSWORD_COMPLEXITY&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序请求屏幕锁的复杂性，并提示用户将屏幕锁更新到一定的复杂性级别 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SCHEDULE_EXACT_ALARM&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序使用精确的报警 API --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SEND_RESPOND_VIA_MESSAGE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序 （电话） 向其他应用程序发送请求，以便在来电期间处理响应消息操作 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SEND_SMS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序发送短信 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_ALARM&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序广播意图为用户设置闹钟 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_ALWAYS_FINISH&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序控制在后台后立即完成活动 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_ANIMATION_SCALE&quot; &#x2F;&gt;
+&lt;!-- 修改全局动画缩放因子 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_DEBUG_APP&quot; &#x2F;&gt;
+&lt;!-- 配置调试应用程序 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_PROCESS_LIMIT&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序设置可以运行的最大数量（不需要）应用程序过程 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_TIME&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序直接设置系统时间 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_TIME_ZONE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序直接设置系统时区 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_WALLPAPER&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序设置壁纸 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SET_WALLPAPER_HINTS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序设置壁纸提示 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SIGNAL_PERSISTENT_PROCESSES&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序请求向所有持久性过程发送信号 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序随时从后台开始前景服务 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.START_VIEW_PERMISSION_USAGE&quot; &#x2F;&gt;
+&lt;!-- 允许持有人启动应用程序的权限使用屏幕 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.STATUS_BAR&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序打开、关闭或禁用状态栏及其图标 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.SYSTEM_ALERT_WINDOW&quot; &#x2F;&gt;
+&lt;!-- 允许应用使用该类型创建窗口，该类型显示在所有其他应用的顶部 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.TRANSMIT_IR&quot; &#x2F;&gt;
+&lt;!-- 如果可用，允许使用设备的红外发射器 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.UPDATE_DEVICE_STATS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序更新设备统计数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序通过该应用程序指示应用更新不需要用户操作 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.USE_BIOMETRIC&quot; &#x2F;&gt;
+&lt;!-- 允许应用使用设备支持的生物识别模式 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.USE_ICC_AUTH_WITH_DEVICE_IDENTIFIER&quot; &#x2F;&gt;
+&lt;!-- 允许读取设备标识符并使用基于 ICC 的身份验证（如 EAP-AKA） --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.USE_SIP&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序使用 SIP 服务 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.UWB_RANGING&quot; &#x2F;&gt;
+&lt;!-- 需要能够使用超宽带的设备 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.VIBRATE&quot; &#x2F;&gt;
+&lt;!-- 允许访问振动器 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WAKE_LOCK&quot; &#x2F;&gt;
+&lt;!-- 允许使用电源经理唤醒锁来防止处理器睡觉或屏幕变暗 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_APN_SETTINGS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序编写 apn 设置并读取现有 apn 设置的敏感字段（如用户和密码） --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_CALENDAR&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序编写用户的日历数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_CALL_LOG&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序编写（但未读取）用户的呼叫日志数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_CONTACTS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序编写用户的联系人数据 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序写入外部存储。 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_GSERVICES&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序修改 Google 服务地图 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_SECURE_SETTINGS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取或编写安全系统设置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_SETTINGS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序读取或编写系统设置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_SYNC_SETTINGS&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序编写同步设置 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_VOICEMAIL&quot; &#x2F;&gt;
+&lt;!-- 允许应用程序修改和删除系统中现有的语音信箱 --&gt;
+&lt;uses-permission android:name&#x3D;&quot;android.permission.&quot; &#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <h4 id="2-动态申请权限"><a href="#2-动态申请权限" class="headerlink" title="2.动态申请权限"></a>2.动态申请权限</h4><ol>
 <li><p>判断是否有权限</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (ContextCompat.checkSelfPermission(<span class="hljs-built_in">this</span>, Manifest.permission.WRITE_EXTERNAL_STORAGE)<br>        != PackageManager.PERMISSION_GRANTED) &#123;<br>    ActivityCompat.requestPermissions(<span class="hljs-built_in">this</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;Manifest.permission.WRITE_EXTERNAL_STORAGE&#125;, <span class="hljs-number">1</span>);<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">ContextCompat</span><span class="token punctuation">.</span><span class="token function">checkSelfPermission</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span><span class="token constant">WRITE_EXTERNAL_STORAGE</span><span class="token punctuation">)</span>
+        <span class="token operator">!=</span> <span class="token class-name">PackageManager</span><span class="token punctuation">.</span><span class="token constant">PERMISSION_GRANTED</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">ActivityCompat</span><span class="token punctuation">.</span><span class="token function">requestPermissions</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span><span class="token constant">WRITE_EXTERNAL_STORAGE</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+   <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 </li>
 <li><p>申请权限</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onRequestPermissionsResult</span><span class="hljs-params">(<span class="hljs-type">int</span> requestCode, <span class="hljs-meta">@NonNull</span> String[] permissions, <span class="hljs-meta">@NonNull</span> <span class="hljs-type">int</span>[] grantResults)</span> &#123;<br>    <span class="hljs-built_in">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);<br>    <span class="hljs-keyword">if</span> (requestCode == <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">if</span> (grantResults.length != <span class="hljs-number">0</span> &amp;&amp; grantResults[<span class="hljs-number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;<br>            Toast.makeText(<span class="hljs-built_in">this</span>, <span class="hljs-string">&quot;权限开启成功&quot;</span>, Toast.LENGTH_SHORT).show();<br><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            Toast.makeText(<span class="hljs-built_in">this</span>, <span class="hljs-string">&quot;权限开启失败&quot;</span>, Toast.LENGTH_SHORT).show();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span><span class="token keyword">int</span> requestCode<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> permissions<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grantResults<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span>requestCode<span class="token punctuation">,</span> permissions<span class="token punctuation">,</span> grantResults<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>requestCode <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>grantResults<span class="token punctuation">.</span>length <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> grantResults<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token class-name">PackageManager</span><span class="token punctuation">.</span><span class="token constant">PERMISSION_GRANTED</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Toast</span><span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"权限开启成功"</span><span class="token punctuation">,</span> <span class="token class-name">Toast</span><span class="token punctuation">.</span><span class="token constant">LENGTH_SHORT</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Toast</span><span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"权限开启失败"</span><span class="token punctuation">,</span> <span class="token class-name">Toast</span><span class="token punctuation">.</span><span class="token constant">LENGTH_SHORT</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure></li>
 </ol>
 
                 
@@ -402,6 +725,15 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
           </article>
         </div>
       </div>
@@ -498,6 +830,30 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
   
   
 </div>
@@ -589,6 +945,8 @@
 </script>
 
 
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
   <script>Fluid.plugins.codeWidget();</script>
@@ -644,11 +1002,18 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
   
-<script src="/js/star.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+<script src="/js/scrollAnimation.js"></script>
 
 
 

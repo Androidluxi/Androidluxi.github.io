@@ -27,6 +27,8 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
   
   <title>Android个人博客</title>
 
@@ -56,11 +58,17 @@
 
 
 
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -101,7 +109,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Android</strong>
+      <strong>每一个脚印，每一份积累，都是最宝贵的财富</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -238,7 +246,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/01/Activity%E5%92%8Cfragment%E4%B9%8B%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8/" target="_self">
+          <img src="/imgs/example/18.jpg" srcset="/img/loading.gif" lazyload alt="Activity和fragment之间的方法调用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/01/Activity%E5%92%8Cfragment%E4%B9%8B%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8/" target="_self">
@@ -247,9 +261,9 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/01/Activity%E5%92%8Cfragment%E4%B9%8B%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8/" target="_self">
+      <a class="index-excerpt " href="/2023/03/01/Activity%E5%92%8Cfragment%E4%B9%8B%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8/" target="_self">
         <div>
-          1.Fragment调用Activity具体方法 在xxxActivity里面有一个方法xxMethod()，在xxxFragment里面调用： 一：直接调用：12xxxActivity activity= (xxxActivity) getActivity();activity.test();  我们需要重写onAttach（）方法，在里面获取activity实例，重点：强转 例： 123456
+          1.Fragment调用Activity具体方法 在xxxActivity里面有一个方法xxMethod()，在xxxFragment里面调用： 一：直接调用：xxxActivity activity= (xxxActivity) getActivity(); activity.test();  我们需要重写onAttach（）方法，在里面获取activity实例，重点：强转 例： @Overri
         </div>
       </a>
 
@@ -292,7 +306,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" target="_self">
+          <img src="/imgs/example/6.jpg" srcset="/img/loading.gif" lazyload alt="Android权限申请">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" target="_self">
@@ -301,9 +321,9 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" target="_self">
+      <a class="index-excerpt " href="/2023/02/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" target="_self">
         <div>
-          1.可以在AndroidManifest里面注册的权限：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909
+          1.可以在AndroidManifest里面注册的权限：&lt;uses-permission android:name&#x3D;&quot;android.permission.ACCEPT_HANDOVER&quot; &#x2F;&gt; &lt;!-- 允许呼应用继续在另一个应用中启动的呼叫 --&gt; &lt;uses-permission android:name&#x3D;&qu
         </div>
       </a>
 
@@ -346,7 +366,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/" target="_self">
+          <img src="/imgs/example/8.jpg" srcset="/img/loading.gif" lazyload alt="AS快捷生成类（方法）注释">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/" target="_self">
@@ -355,9 +381,9 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/" target="_self">
+      <a class="index-excerpt " href="/2023/02/28/AS%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E7%B1%BB%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89%E6%B3%A8%E9%87%8A/" target="_self">
         <div>
-          1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   12345/** * @auther luxi * @email luxi2@mychery.com * @date $&#123;DATE&#125; $&#123;TIME&#125; */
+          1、自定义类注释 修改 Settings-&gt;Editor-&gt;File and Code Templates-&gt;Includues-&gt;File Header 文件添加默认类注释。   /**  * @auther luxi  * @email luxi2@mychery.com  * @date $&#123;DATE&#125; $&#123;TIME&#125;  */
         </div>
       </a>
 
@@ -407,7 +433,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/02/23/Android%E6%9C%8D%E5%8A%A1/" target="_self">
+          <img src="/imgs/example/25.jpg" srcset="/img/loading.gif" lazyload alt="Android服务">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/02/23/Android%E6%9C%8D%E5%8A%A1/" target="_self">
@@ -416,7 +448,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/23/Android%E6%9C%8D%E5%8A%A1/" target="_self">
+      <a class="index-excerpt " href="/2023/02/23/Android%E6%9C%8D%E5%8A%A1/" target="_self">
         <div>
           
         </div>
@@ -440,7 +472,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/02/23/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/" target="_self">
+          <img src="/imgs/example/11.jpg" srcset="/img/loading.gif" lazyload alt="错误：程序包R不存在">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/02/23/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/" target="_self">
@@ -449,7 +487,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/23/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/" target="_self">
+      <a class="index-excerpt " href="/2023/02/23/%E9%94%99%E8%AF%AF%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%8C%85R%E4%B8%8D%E5%AD%98%E5%9C%A8/" target="_self">
         <div>
           错误: 程序包R不存在” 的解决方法 这种情况一般就是包导错了，或者说：您引用的R可能与包名不符。下面总结我的排查过程:  有可能是：导入的包覆盖了真正要引用的R包，首先可以尝试删除你import android.R等这样的导入。然后rebuild project。但是我的项目里面并没有相关的导入。（没有解决我的问题）  检查AndroidManifest文件。我发现这里面我项目包的路径是不对的。
         </div>
@@ -501,7 +539,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/02/19/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%91%BD%E4%BB%A4/" target="_self">
+          <img src="/imgs/example/21.jpg" srcset="/img/loading.gif" lazyload alt="使用Hexo的常见命令">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/02/19/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%91%BD%E4%BB%A4/" target="_self">
@@ -510,9 +554,9 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/19/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%91%BD%E4%BB%A4/" target="_self">
+      <a class="index-excerpt " href="/2023/02/19/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%91%BD%E4%BB%A4/" target="_self">
         <div>
-          使用hexo的常见命令你可以执行下列命令来创建一篇新文章或者新的页面。 1$ hexo new [layout] &lt;title&gt;  Front-matter 是文件最上方以 --- 分隔的区域，用于指定个别文件的变量: 123456title: 我的博客date: 2023-02-16 12:19:07categories:- [日常生活]tags:- 生活  如果你需要为文章添加多个
+          使用hexo的常见命令你可以执行下列命令来创建一篇新文章或者新的页面。 $ hexo new [layout] &lt;title&gt;  Front-matter 是文件最上方以 --- 分隔的区域，用于指定个别文件的变量: title: 我的博客 date: 2023-02-16 12:19:07 categories: - [日常生活] tags: - 生活  如果你需要为文章添加多个分类
         </div>
       </a>
 
@@ -562,7 +606,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/" target="_self">
+          <img src="/imgs/example/19.jpg" srcset="/img/loading.gif" lazyload alt="IPC 通信原理">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/" target="_self">
@@ -571,7 +621,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/" target="_self">
+      <a class="index-excerpt " href="/2023/02/17/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88IPC%E6%9C%BA%E5%88%B6%EF%BC%89/" target="_self">
         <div>
           传统 IPC 通信原理在操作系统中，进程与进程间的内存和数据都是不共享的。这样做的目的，是为了避免进程间相互操作数据的现象发生，从而引起各自的安全问题。为了实现进程隔离，采用了虚拟地址空间，两个进程各自的虚拟地址不同，从逻辑上来实现彼此间的隔离。两个进程之间要进行通信，就需要采用特殊的通信机制：进程间通信（IPC:Inter-Process Communication，即进程间通信或跨进程通信，简
         </div>
@@ -616,7 +666,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
+          <img src="/imgs/example/16.jpg" srcset="/img/loading.gif" lazyload alt="我的博客">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
@@ -625,7 +681,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
+      <a class="index-excerpt " href="/2023/02/16/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_self">
         <div>
           ​		今天是我写博客的第一天，忙活了两天，终于搭建好了自己的博客，属于自己的私密空间。期待以后能够每天记录自己的日常。
         </div>
@@ -732,6 +788,30 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
   
   
 </div>
@@ -785,11 +865,18 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
   
-<script src="/js/star.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+<script src="/js/scrollAnimation.js"></script>
 
 
 

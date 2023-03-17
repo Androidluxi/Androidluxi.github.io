@@ -27,6 +27,8 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
   
   <title>Android个人博客</title>
 
@@ -56,11 +58,17 @@
 
 
 
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -101,7 +109,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Android</strong>
+      <strong>每一个脚印，每一份积累，都是最宝贵的财富</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -238,7 +246,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/17/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/" target="_self">
+          <img src="/imgs/example/img_2.jpg" srcset="/img/loading.gif" lazyload alt="隐藏头部状态栏">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/17/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/" target="_self">
@@ -247,9 +261,9 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/17/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/" target="_self">
+      <a class="index-excerpt " href="/2023/03/17/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/" target="_self">
         <div>
-          Android隐藏头部状态栏1. onCreate 中通过代码隐藏（MainActivity）首先贴上官网介绍的方法 隐藏状态栏  | Android 开发者  | Android Developers 在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏 12345678View decorView = getWindow().getDe
+          Android隐藏头部状态栏1. onCreate 中通过代码隐藏（MainActivity）首先贴上官网介绍的方法 隐藏状态栏  | Android 开发者  | Android Developers 在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏 View decorView = getWindow().getDecorView(
         </div>
       </a>
 
@@ -292,7 +306,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89dialog/" target="_self">
+          <img src="/imgs/example/2.jpg" srcset="/img/loading.gif" lazyload alt="自定义dialog">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89dialog/" target="_self">
@@ -301,9 +321,9 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89dialog/" target="_self">
+      <a class="index-excerpt " href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89dialog/" target="_self">
         <div>
-          自定义Dialog工具类12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989
+          自定义Dialog工具类import android.app.Dialog; import android.content.Context; import android.os.Handler; import android.os.Looper; import android.os.Message; import android.util.Log; import android.view.View
         </div>
       </a>
 
@@ -353,7 +373,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89toast/" target="_self">
+          <img src="/imgs/example/8.jpg" srcset="/img/loading.gif" lazyload alt="自定义toast">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89toast/" target="_self">
@@ -362,9 +388,9 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89toast/" target="_self">
+      <a class="index-excerpt " href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89toast/" target="_self">
         <div>
-          自定义Toast工具类123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
+          自定义Toast工具类import android.content.Context; import android.view.Gravity; import android.view.LayoutInflater; import android.view.View; import android.widget.TextView; import android.widget.Toast; impor
         </div>
       </a>
 
@@ -414,7 +440,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/16/AS%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" target="_self">
+          <img src="/imgs/example/7.jpg" srcset="/img/loading.gif" lazyload alt="AS的快捷键">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/16/AS%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" target="_self">
@@ -423,7 +455,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/16/AS%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" target="_self">
+      <a class="index-excerpt " href="/2023/03/16/AS%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" target="_self">
         <div>
           AS快捷键   作用 快捷键 注释    格式化代码 Ctrl + Alt + L    隐藏所有面板 Ctrl + Shift + F12 切换编辑器铺满整个程序界面，隐藏其他的面板。再次执行该操作，将会回到隐藏前的状态。   最近访问 Ctrl + E 该操作可以得到一个最近访问文件的可搜索的列表。   最近修改的文件 Ctrl + Shift + E 该操作类似于“最近访问（Recents）
         </div>
@@ -475,7 +507,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/08/git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%90%8E%E7%BB%AD%E6%97%A5%E5%B8%B8%E8%A1%A5%E5%85%85/" target="_self">
+          <img src="/imgs/example/5.jpg" srcset="/img/loading.gif" lazyload alt="git基本使用记录(后续日常补充)">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/08/git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%90%8E%E7%BB%AD%E6%97%A5%E5%B8%B8%E8%A1%A5%E5%85%85/" target="_self">
@@ -484,7 +522,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/08/git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%90%8E%E7%BB%AD%E6%97%A5%E5%B8%B8%E8%A1%A5%E5%85%85/" target="_self">
+      <a class="index-excerpt " href="/2023/03/08/git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95-%E5%90%8E%E7%BB%AD%E6%97%A5%E5%B8%B8%E8%A1%A5%E5%85%85/" target="_self">
         <div>
           学其上，仅得其中；学其中，斯为 下矣  Git官方使用文档：https://git-scm.com/book/en/v2
         </div>
@@ -536,7 +574,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/08/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90ssh%E5%AF%86%E9%92%A5%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" target="_self">
+          <img src="/imgs/example/23.jpg" srcset="/img/loading.gif" lazyload alt="如何生成ssh密钥的详细步骤">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/08/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90ssh%E5%AF%86%E9%92%A5%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" target="_self">
@@ -545,7 +589,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/08/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90ssh%E5%AF%86%E9%92%A5%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" target="_self">
+      <a class="index-excerpt " href="/2023/03/08/%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90ssh%E5%AF%86%E9%92%A5%E7%9A%84%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" target="_self">
         <div>
           git生成ssh密钥详细步骤Git是一个开源的分布式版本控制系统，可以高效敏捷的处理任何项目，用于帮助管理Linux内核开发。而生成一个ssh是十分必要的，可以使电脑和code服务器之间建立安全的加密连接。 git生成ssh密钥详细步骤  首先右键点击电脑桌面，点击选择”Git Bash Here”，打开git命令窗口;    在git命令窗口配置用户，输入命令：**git config –glo
         </div>
@@ -597,7 +641,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/03/Application%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+          <img src="/imgs/example/6.jpg" srcset="/img/loading.gif" lazyload alt="Application的使用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/03/Application%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
@@ -606,7 +656,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/03/Application%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+      <a class="index-excerpt " href="/2023/03/03/Application%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
         <div>
           Application类首先我们应该明白Application类的作用，这是一个Android框架内置的一个系统组件，类似于Activity、service。 应用场景：我们可以通过继承Application的来实现应用程序层面的全局变量。  每个app默认有且只有一个Application实例，如果我们没有写一个Application子类来继承他，app就会创建一个默认的实例。 我们启动Appl
         </div>
@@ -651,7 +701,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/03/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" target="_self">
+          <img src="/imgs/example/18.jpg" srcset="/img/loading.gif" lazyload alt="事件处理机制">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/03/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" target="_self">
@@ -660,7 +716,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/03/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" target="_self">
+      <a class="index-excerpt " href="/2023/03/03/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" target="_self">
         <div>
           基于回调的事件处理机制就是老板给了任务让工人完成，工人完成之后需要向老板汇报，这个给的任务是抽象的，具体非分配到每个工人身上的任务不相同，但是工人完成之后都需要向老板汇报，这就是回调。 老板给出的任务是抽象的，所以应该是一个接口或者抽象类，我们需要对他进行实现，分成具体的任务，工人和老板是两个对象，老板里面需要收到工人完工的消息，工人需要告诉老板任务完成了，所以工人需要调用老板里面的方法。 老板是
         </div>
@@ -705,7 +761,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/03/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/" target="_self">
+          <img src="/imgs/example/9.jpg" srcset="/img/loading.gif" lazyload alt="Android基础知识_1">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/03/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/" target="_self">
@@ -714,7 +776,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/03/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/" target="_self">
+      <a class="index-excerpt " href="/2023/03/03/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/" target="_self">
         <div>
           Android基础Android的sdk并不完善的地方，谷歌所以推出了一些开源库来支持开发，之所以不合并到sdk里面，一是sdk追求稳定性，版本更新时间一般也比较长，一些频繁更新和迭代的特性不方便放到sdk里面。二是为了向后兼容。 AndroidX是谷歌提供的新的Android支持库，代替了原来的Android Support Library。AndroidX里面包括了Jetpack 库，而且an
         </div>
@@ -759,7 +821,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/03/03/LiveData%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" target="_self">
+          <img src="/imgs/example/16.jpg" srcset="/img/loading.gif" lazyload alt="LiveData的原理和使用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2023/03/03/LiveData%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" target="_self">
@@ -768,7 +836,7 @@
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/03/LiveData%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" target="_self">
+      <a class="index-excerpt " href="/2023/03/03/LiveData%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/" target="_self">
         <div>
           Livedata是什么？它的作用是什么？我们能用它来干什么？首先，LiveData是一种可观察的数据存储类。这句话可以看成两个部分，一个是可观察的类，另一个是数据存储的类。  LiveData 是可以被观察的， 但是与常规的可观察类不同，Livadata具有感知生命周期的能力。意指它遵循其他应用组件（如 activity、fragment 或 service）的生命周期。有这种感知能力的LiveD
         </div>
@@ -868,6 +936,30 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
   
   
 </div>
@@ -921,11 +1013,18 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
   
-<script src="/js/star.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/timeDate.js"></script>
+<script src="/js/scrollAnimation.js"></script>
 
 
 
