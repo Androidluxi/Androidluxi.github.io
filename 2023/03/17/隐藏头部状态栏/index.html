@@ -16,23 +16,23 @@
   <meta name="author" content="路茜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基于回调的事件处理机制就是老板给了任务让工人完成，工人完成之后需要向老板汇报，这个给的任务是抽象的，具体非分配到每个工人身上的任务不相同，但是工人完成之后都需要向老板汇报，这就是回调。 老板给出的任务是抽象的，所以应该是一个接口或者抽象类，我们需要对他进行实现，分成具体的任务，工人和老板是两个对象，老板里面需要收到工人完工的消息，工人需要告诉老板任务完成了，所以工人需要调用老板里面的方法。 老板是">
+    <meta name="description" content="Android隐藏头部状态栏1. onCreate 中通过代码隐藏（MainActivity）首先贴上官网介绍的方法 隐藏状态栏  | Android 开发者  | Android Developers 在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏 12345678View decorView &#x3D; getWindow().getDe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事件处理机制">
-<meta property="og:url" content="http://example.com/2023/03/03/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:title" content="隐藏头部状态栏">
+<meta property="og:url" content="http://example.com/2023/03/17/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/index.html">
 <meta property="og:site_name" content="Android个人博客">
-<meta property="og:description" content="基于回调的事件处理机制就是老板给了任务让工人完成，工人完成之后需要向老板汇报，这个给的任务是抽象的，具体非分配到每个工人身上的任务不相同，但是工人完成之后都需要向老板汇报，这就是回调。 老板给出的任务是抽象的，所以应该是一个接口或者抽象类，我们需要对他进行实现，分成具体的任务，工人和老板是两个对象，老板里面需要收到工人完工的消息，工人需要告诉老板任务完成了，所以工人需要调用老板里面的方法。 老板是">
+<meta property="og:description" content="Android隐藏头部状态栏1. onCreate 中通过代码隐藏（MainActivity）首先贴上官网介绍的方法 隐藏状态栏  | Android 开发者  | Android Developers 在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏 12345678View decorView &#x3D; getWindow().getDe">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/152630_7Yke_2971691.png">
-<meta property="article:published_time" content="2023-03-03T08:02:15.000Z">
-<meta property="article:modified_time" content="2023-03-03T08:02:41.955Z">
+<meta property="og:image" content="http://example.com/imgs/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/1.jpg">
+<meta property="article:published_time" content="2023-03-17T07:38:39.000Z">
+<meta property="article:modified_time" content="2023-03-17T07:44:20.995Z">
 <meta property="article:author" content="路茜">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/152630_7Yke_2971691.png">
+<meta name="twitter:image" content="http://example.com/imgs/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/1.jpg">
   
   
   
-  <title>事件处理机制 - Android个人博客</title>
+  <title>隐藏头部状态栏 - Android个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="事件处理机制"></span>
+            <span id="subtitle" data-typed-text="隐藏头部状态栏"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-03 16:02" pubdate>
-          2023年3月3日 下午
+        <time datetime="2023-03-17 15:38" pubdate>
+          2023年3月17日 下午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          980 字
+          1.3k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          9 分钟
+          11 分钟
         
       </span>
     
@@ -285,27 +285,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">事件处理机制</h1>
+            <h1 style="display: none">隐藏头部状态栏</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="基于回调的事件处理机制"><a href="#基于回调的事件处理机制" class="headerlink" title="基于回调的事件处理机制"></a>基于回调的事件处理机制</h2><p>就是老板给了任务让工人完成，工人完成之后需要向老板汇报，这个给的任务是抽象的，具体非分配到每个工人身上的任务不相同，但是工人完成之后都需要向老板汇报，这就是回调。</p>
-<p>老板给出的任务是抽象的，所以应该是一个接口或者抽象类，我们需要对他进行实现，分成具体的任务，工人和老板是两个对象，老板里面需要收到工人完工的消息，工人需要告诉老板任务完成了，所以工人需要调用老板里面的方法。</p>
-<p>老板是客户端，提出要求，工人是服务端，完成需求，完成之后告诉老板。</p>
-<p><img src="/../imgs/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/152630_7Yke_2971691.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>除了我们子自定义的回调函数，Android里面还存在系统定义的回调函数，生命周期里面的函数都是回调函数，触摸事件也是回调函数，我们重写的方法就是回调方法，我们是客户端，系统是服务端，可以理解为：我告诉系统如果有人摸你，你就告诉我，我这边有相应的处理办法，现在真的有人摸了，然后系统就调用你写的处理方法了。</p>
-<ul>
-<li><h2 id="基于监听的事件处理机制"><a href="#基于监听的事件处理机制" class="headerlink" title="基于监听的事件处理机制"></a>基于监听的事件处理机制</h2><p>我认为基于监听事件的处理机制，就是给用户的每一个可操作控件增加一个监听器，当这个控件的状态发生变化之后，监听器就会针对这个变化，给出相应的处理方法。</p>
-<p>这是一种委派式的处理机制，事件本身不去处理，而是将处理委托给监听器。</p>
-<p>我们对于事件源的监听，有5种方法。</p>
-<p>一种就是匿名内部类，我认为一般是在控件较少的情况下使用，它无法复用，临时使用。</p>
-<p>一种是内部类的方式，我们定义一个内部类来实现view.OnclickListener，重写onclick方法。那么这个类就是一个监听器，我们可以在这个类里面写处理方法，当某个控件需要相应的处理方法时候，我们只需要将事件和监听器（内部类）绑定起来。</p>
-<p>一种是外部类的方式，我感觉应该是不建议使用的，它是定义一个类来实现OnClickListener，外部类不能够直接访问活动里面的控件，所以我们就必须通过构造方法将组件传入，这样会让代码不够简洁。感觉外部类和内部类非常相似，但是因为外部类不能直接访问活动里面控件的缘故，我觉得内部类使用更加方便。</p>
-<p>一种是在活动上绑定监听器，我们直接在活动上实现事件监听器，重写里面的方法，然后使用时，直接set····（this）就可以了。我认为这是使用起来最简洁的方法。</p>
-<p>一种是绑定到标签上，在xml的布局文件里面，有一个onClick标签，我们直接给他赋值，然后在活动里面创建一个以这个值为名字的方法，在里面实现监听事件。</p>
+                <h1 id="Android隐藏头部状态栏"><a href="#Android隐藏头部状态栏" class="headerlink" title="Android隐藏头部状态栏"></a>Android隐藏头部状态栏</h1><h3 id="1-onCreate-中通过代码隐藏（MainActivity）"><a href="#1-onCreate-中通过代码隐藏（MainActivity）" class="headerlink" title="1. onCreate 中通过代码隐藏（MainActivity）"></a>1. onCreate 中通过代码隐藏（MainActivity）</h3><p>首先贴上官网介绍的方法</p>
+<p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/training/system-ui/status?hl=zh-cn#41">隐藏状态栏  | Android 开发者  | Android Developers</a></p>
+<p>在Android4.1之后，如果Activity继承的是Application，则用官方介绍的办法来隐藏状态栏</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">View</span> <span class="hljs-variable">decorView</span> <span class="hljs-operator">=</span> getWindow().getDecorView();<br><span class="hljs-comment">// Hide the status bar.</span><br><span class="hljs-type">int</span> <span class="hljs-variable">uiOptions</span> <span class="hljs-operator">=</span> View.SYSTEM_UI_FLAG_FULLSCREEN;<br>decorView.setSystemUiVisibility(uiOptions);<br><span class="hljs-comment">// Remember that you should never show the action bar if the</span><br><span class="hljs-comment">// status bar is hidden, so hide that too if necessary.</span><br><span class="hljs-type">ActionBar</span> <span class="hljs-variable">actionBar</span> <span class="hljs-operator">=</span> getActionBar();<br>actionBar.hide();<br></code></pre></td></tr></table></figure>
+
+<p>存下以下错误：getActionBar的值是null。</p>
+<p><img src="/../imgs/%E9%9A%90%E8%97%8F%E5%A4%B4%E9%83%A8%E7%8A%B6%E6%80%81%E6%A0%8F/1.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><strong>如果Activity继承了Appcompat，则必须使用getSupportActionBar()来获取ActionBar</strong></p>
+<p>我实验之后发现这部分代码有部分废弃了。具体作用也不是很明确。</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">View decorView <span class="hljs-operator">=</span> getWindow().getDecorView()<span class="hljs-comment">;</span><br>int uiOptions <span class="hljs-operator">=</span> View.SYSTEM_UI_FLAG_FULLSCREEN<span class="hljs-comment">;</span><br>decorView.setSystemUiVisibility(uiOptions)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><p>MainActivity 继承 Activity 时<br>如果在 onCreate –&gt; setContentView 方法之后加则会报错。<br>onCreate –&gt; setContentView 方法前加入以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">requestWindowFeature(Window.FEATURE_NO_TITLE);<br></code></pre></td></tr></table></figure>
 </li>
-</ul>
+<li><p>MainActivity 继承 AppCompatActivity 时</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ActionBar</span> <span class="hljs-variable">actionBar</span> <span class="hljs-operator">=</span> getSupportActionBar();<br>        <span class="hljs-keyword">if</span> (actionBar!=<span class="hljs-literal">null</span>) &#123;<br>            actionBar.hide();<br>        &#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="2-布局清单中通过-Activity-theme-隐藏（AndroidMainfest）"><a href="#2-布局清单中通过-Activity-theme-隐藏（AndroidMainfest）" class="headerlink" title="2.布局清单中通过 Activity theme 隐藏（AndroidMainfest）"></a>2.布局清单中通过 Activity theme 隐藏（AndroidMainfest）</h3><p>这种方式，MainActivity 继承 Activity 或 AppCompatActivity 都可用</p>
+<p>在 res —&gt; values —&gt; styles —&gt; 中加入以下代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;HideStyle&quot;</span> <span class="hljs-attr">parent</span>=<span class="hljs-string">&quot;Theme.AppCompat.Light.NoActionBar&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后在需要隐藏标题栏的activity标签声明中，加入以下代码即可；</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">android:theme=&quot;@style/HideStyle&quot;<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -344,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>事件处理机制</div>
-      <div>http://example.com/2023/03/03/事件处理机制/</div>
+      <div>隐藏头部状态栏</div>
+      <div>http://example.com/2023/03/17/隐藏头部状态栏/</div>
     </div>
     <div class="license-meta">
       
@@ -357,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年3月3日</div>
+          <div>2023年3月17日</div>
         </div>
       
       
@@ -389,18 +398,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/03/Application%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Application的使用">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Application的使用</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/03/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1/" title="Android基础知识_1">
-                        <span class="hidden-mobile">Android基础知识_1</span>
+                      <a href="/2023/03/17/%E8%87%AA%E5%AE%9A%E4%B9%89dialog/" title="自定义dialog">
+                        <span class="hidden-mobile">自定义dialog</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
