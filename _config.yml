@@ -5,16 +5,16 @@
 # Site
 title: 我的博客
 subtitle: 学习
-description: 每一个脚印，每一份积累，都是最宝贵的财富'
+description: 合抱之木，生于毫末；九层之台，起于累土。'
 keywords:
-author: 路茜
+author: lux
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
-permalink: :year/:month/:day/:title/
+url: https://tangerine-kitten-lux.netlify.app/
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
