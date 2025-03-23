@@ -3,7 +3,7 @@ title: Collection接口
 date: 2023-04-24 01:00:08
 index_img: /img/9.jpg
 category:
-- Java知识
+- Java
 tags:
 - Java
 ---

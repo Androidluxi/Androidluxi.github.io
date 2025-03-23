@@ -1,11 +1,13 @@
 ---
-title: git常见命令
-date: 2023-03-30 22:14:02
+title: git基本命令-1
 index_img: /img/11.jpg
 category:
-- 工具知识
+  - 工具知识
+  - Git
 tags:
-- Git
+  - Git
+abbrlink: 23d5
+date: 2023-03-30 22:14:02
 ---
 
 ## 删除所关联的远程仓库地址
