@@ -1,0 +1,759 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="路茜">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="LiveDataLivedata是什么？它的作用是什么？我们能用它来干什么？首先，LiveData是一种可观察的数据存储类。这句话可以看成两个部分，一个是可观察的类，另一个是数据存储的类。  LiveData 是可以被观察的， 但是与常规的可观察类不同，Livadata具有感知生命周期的能力。意指它遵循其他应用组件（如 activity、fragment 或 service）的生命周期。有这种感知">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiveData的原理和使用">
+<meta property="og:url" content="http://example.com/2023/03/28/LiveData%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="LiveDataLivedata是什么？它的作用是什么？我们能用它来干什么？首先，LiveData是一种可观察的数据存储类。这句话可以看成两个部分，一个是可观察的类，另一个是数据存储的类。  LiveData 是可以被观察的， 但是与常规的可观察类不同，Livadata具有感知生命周期的能力。意指它遵循其他应用组件（如 activity、fragment 或 service）的生命周期。有这种感知">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/9.jpg">
+<meta property="article:published_time" content="2023-03-27T17:00:10.000Z">
+<meta property="article:modified_time" content="2025-03-23T14:23:10.164Z">
+<meta property="article:author" content="路茜">
+<meta property="article:tag" content="Android进阶知识">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/9.jpg">
+  
+  
+  
+  <title>LiveData的原理和使用 - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css# 鼠标指针.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/fluid-extention.css">
+<link rel="stylesheet" href="/css/fluid-scroll-bar.css">
+<link rel="stylesheet" href="/css/fluid-Navigation-bar-animation.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>听闻风起</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LiveData的原理和使用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-28 01:00" pubdate>
+          2023年3月28日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          79 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">LiveData的原理和使用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h1><h2 id="Livedata是什么？它的作用是什么？我们能用它来干什么？"><a href="#Livedata是什么？它的作用是什么？我们能用它来干什么？" class="headerlink" title="Livedata是什么？它的作用是什么？我们能用它来干什么？"></a>Livedata是什么？它的作用是什么？我们能用它来干什么？</h2><p>首先，LiveData是一种可观察的数据存储类。这句话可以看成两个部分，一个是可观察的类，另一个是数据存储的类。</p>
+<ul>
+<li>LiveData 是可以被观察的， 但是与常规的可观察类不同，Livadata具有感知生命周期的能力。意指它遵循其他应用组件（如 activity、fragment 或 service）的生命周期。有这种感知能力的LiveData ，只会通知活跃生命周期状态的应用组件观察者。</li>
+<li>LiveData是用来存储数据的，这是它最直接的作用。当LiveData的数据发生变化的时候，就会通知应用组建的观察者。</li>
+</ul>
+<p>Observe类的生命周期处于Start或者Resumed状态时候，LiveData就认为Observe类处于活跃状态。也就是说LiveData只会通知活跃的观察者，也就是说处于其他生命周期的观察者，即使LiveData发生了变化，也不会收到通知。这样的好处是避免了内存泄露。</p>
+<h2 id="LiveData的优势："><a href="#LiveData的优势：" class="headerlink" title="LiveData的优势："></a>LiveData的优势：</h2><ol>
+<li>确保界面符合数据状态</li>
+<li>不会发生内存泄漏</li>
+<li>不会因 Activity 停止而导致崩溃</li>
+<li>不再需要手动处理生命周期</li>
+<li>数据始终保持最新状态</li>
+<li>适当的配置更改</li>
+<li>共享资源</li>
+</ol>
+<h2 id="LIveData的使用："><a href="#LIveData的使用：" class="headerlink" title="LIveData的使用："></a>LIveData的使用：</h2><ol>
+<li>创建LiveData实例，用来存储某种类型的数据。我们通常在ViewModel中完成。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NameViewModel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ViewModel</span> &#123;<br><span class="hljs-comment">// Create a LiveData with a String</span><br><span class="hljs-keyword">private</span> MutableLiveData&lt;String&gt; currentName;<br><br>    <span class="hljs-keyword">public</span> MutableLiveData&lt;String&gt; <span class="hljs-title function_">getCurrentName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//有一个判空</span><br>        <span class="hljs-keyword">if</span> (currentName == <span class="hljs-literal">null</span>) &#123;<br>            currentName = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MutableLiveData</span>&lt;String&gt;();<br>        &#125;<br>        <span class="hljs-keyword">return</span> currentName;<br>    &#125;<br><span class="hljs-comment">// Rest of the ViewModel...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>我们使用LiveData的方式主要有两种。<ul>
+<li>一种是继承LiveData的子类MutableLIveData。因为LiveData是一个抽象类，我们不能直接继承，所以我们只能继承他的子类。</li>
+<li>一种是创建可定义 onChanged() 方法的 Observer 对象，该方法可以控制当 LiveData 对象存储的数据更改时会发生什么。通常情况下，您可以在界面控制器（如 activity 或 fragment）中创建 Observer 对象。</li>
+</ul>
+</li>
+<li>使用 observe() 方法将 Observer 对象附加到 LiveData 对象。observe() 方法会采用 LifecycleOwner 对象。这样会使 Observer 对象订阅 LiveData 对象，以使其收到有关更改的通知。通常情况下，您可以在界面控制器（如 activity 或 fragment）中附加 Observer 对象。</li>
+</ol>
+<h2 id="LiveData的部分源码分析"><a href="#LiveData的部分源码分析" class="headerlink" title="LiveData的部分源码分析"></a>LiveData的部分源码分析</h2><h3 id="MutableLiveData对外公开数据更新"><a href="#MutableLiveData对外公开数据更新" class="headerlink" title="MutableLiveData对外公开数据更新"></a>MutableLiveData对外公开数据更新</h3><p>LiveData的子类MutableLiveData，是我们可以直接使用的子类。在LiveData 里面没有公开的方法来更新存储的数据，但是在MutableLiveData中给我们提供了两个修改LiveData对象值的方法：setValue(T)和postValue(T)。同样这个两个方法也是重写了LiveData里面的方法。这两个方法分别适用在不同的线程里面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> androidx.lifecycle;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * &#123;<span class="hljs-doctag">@link</span> LiveData&#125; which publicly exposes &#123;<span class="hljs-doctag">@link</span> #setValue(T)&#125; and &#123;<span class="hljs-doctag">@link</span> #postValue(T)&#125; method.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &lt;T&gt; The type of data hold by this instance</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@SuppressWarnings(&quot;WeakerAccess&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MutableLiveData</span>&lt;T&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title class_">LiveData</span>&lt;T&gt; &#123;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Creates a MutableLiveData initialized with the given &#123;<span class="hljs-doctag">@code</span> value&#125;.</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> value initial value</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MutableLiveData</span><span class="hljs-params">(T value)</span> &#123;<br>        <span class="hljs-built_in">super</span>(value);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Creates a MutableLiveData with no value assigned to it.</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MutableLiveData</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-built_in">super</span>();<br>    &#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 如果有活动的观察者，值将被发送给他们。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> value 新值</span><br><span class="hljs-comment"> * 只能在主线程调用</span><br><span class="hljs-comment"> */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">postValue</span><span class="hljs-params">(T value)</span> &#123;<br>        <span class="hljs-built_in">super</span>.postValue(value);<br>    &#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 如果有活动的观察者，值将被发送给他们。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> value 新值</span><br><span class="hljs-comment"> * 只能在子线程调用</span><br><span class="hljs-comment"> */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setValue</span><span class="hljs-params">(T value)</span> &#123;<br>        <span class="hljs-built_in">super</span>.setValue(value);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="observe订阅源码分析"><a href="#observe订阅源码分析" class="headerlink" title="observe订阅源码分析"></a>observe订阅源码分析</h3><p>obeserve订阅有两个方法。一个感知生命周期observe（），一个不感知生命周期observeForever（）。</p>
+<p>注册observe的方法需要传入两个参数，分别是生命周期的拥有者（一般是Activity、Fragment、Service）接收事件的观察者。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@MainThread</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">observe</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> LifecycleOwner owner, <span class="hljs-meta">@NonNull</span> Observer&lt;? <span class="hljs-built_in">super</span> T&gt; observer)</span> &#123;<br>    assertMainThread(<span class="hljs-string">&quot;observe&quot;</span>);<br>    <span class="hljs-keyword">if</span> (owner.getLifecycle().getCurrentState() == DESTROYED) &#123;<br>        <span class="hljs-comment">// ignore</span><br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">LifecycleBoundObserver</span> <span class="hljs-variable">wrapper</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LifecycleBoundObserver</span>(owner, observer);<br>    <span class="hljs-type">ObserverWrapper</span> <span class="hljs-variable">existing</span> <span class="hljs-operator">=</span> mObservers.putIfAbsent(observer, wrapper);<br>    <span class="hljs-keyword">if</span> (existing != <span class="hljs-literal">null</span> &amp;&amp; !existing.isAttachedTo(owner)) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Cannot add the same observer&quot;</span><br>                + <span class="hljs-string">&quot; with different lifecycles&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (existing != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    owner.getLifecycle().addObserver(wrapper);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>下面我们逐句分析：</p>
+<ol>
+<li>这个方法执行必须在主线程，否则抛出异常。</li>
+<li>生命周期的拥有者不能是destoryed状态，否则结束方法。或者说忽视订阅请求</li>
+<li>对生命周期的拥有者lifecycleOwner和事件的观察者observer进行包装注册成一个LifecycleBoundObserver对象，这就是为什么LiveData能够感知生命周期的原因。</li>
+<li>封包和观察者必须是对应的，一个观察者不能同时观察多个生命周期。但是一个生命周期可以绑定多个观察者</li>
+<li>添加观察者，这里可以很清楚的看到，添加的观察者是wrapper，而不是我们传入的observer参数。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@MainThread</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">observeForever</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Observer&lt;? <span class="hljs-built_in">super</span> T&gt; observer)</span> &#123;<br>    assertMainThread(<span class="hljs-string">&quot;observeForever&quot;</span>);<br>    <span class="hljs-type">AlwaysActiveObserver</span> <span class="hljs-variable">wrapper</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AlwaysActiveObserver</span>(observer);<br>    <span class="hljs-type">ObserverWrapper</span> <span class="hljs-variable">existing</span> <span class="hljs-operator">=</span> mObservers.putIfAbsent(observer, wrapper);<br>    <span class="hljs-keyword">if</span> (existing != <span class="hljs-literal">null</span> &amp;&amp; existing <span class="hljs-keyword">instanceof</span> LiveData.LifecycleBoundObserver) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Cannot add the same observer&quot;</span><br>                + <span class="hljs-string">&quot; with different lifecycles&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (existing != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    wrapper.activeStateChanged(<span class="hljs-literal">true</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>结论：这个方法创建的观察者，会永远收到数据变化的回调，在组件销毁时，需要用户手动的removObserver（）。</p>
+<p>逐句分析：</p>
+<ol>
+<li><p>这里我们只传入了我们想设定的observer。没有传入生命周期的拥有者。</p>
+</li>
+<li><p>将observer包装成AlwaysActiviteObserver实例。同样wrapper和observer是对应的，如果已经添加到了LIveData，那么就抛出异常。</p>
+</li>
+<li><p>activeStateChanged（）方法传入true。将观察者立刻设置成活动态。它会一直保持在活动态，这就是他一直收到数据变化回调的秘诀。</p>
+</li>
+</ol>
+<h3 id="observe移除源码"><a href="#observe移除源码" class="headerlink" title="observe移除源码"></a>observe移除源码</h3><p>LiveData提供的observe移除方法也有两种，一种是移除removeObserve（）方法传入的观察者。另一种是移除removeObserve（）方法传入的生命周期拥有者，这样就会直接移除该生命周期所有绑定的观察者。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeObserver</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> <span class="hljs-keyword">final</span> Observer&lt;? <span class="hljs-built_in">super</span> T&gt; observer)</span> &#123;<br>    assertMainThread(<span class="hljs-string">&quot;removeObserver&quot;</span>);<br>    <span class="hljs-type">ObserverWrapper</span> <span class="hljs-variable">removed</span> <span class="hljs-operator">=</span> mObservers.remove(observer);<br>    <span class="hljs-keyword">if</span> (removed == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    removed.detachObserver();<br>    removed.activeStateChanged(<span class="hljs-literal">false</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>源码分析：</p>
+<ol>
+<li>判断主线程</li>
+<li>分离观察者和生命周期拥有者</li>
+<li>将观察者的一直设置成不活动态。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SuppressWarnings(&quot;WeakerAccess&quot;)</span><br><span class="hljs-meta">@MainThread</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeObservers</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> <span class="hljs-keyword">final</span> LifecycleOwner owner)</span> &#123;<br>    assertMainThread(<span class="hljs-string">&quot;removeObservers&quot;</span>);<br>    <span class="hljs-keyword">for</span> (Map.Entry&lt;Observer&lt;? <span class="hljs-built_in">super</span> T&gt;, ObserverWrapper&gt; entry : mObservers) &#123;<br>        <span class="hljs-keyword">if</span> (entry.getValue().isAttachedTo(owner)) &#123;<br>            removeObserver(entry.getKey());<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里明显进行了一次遍历，逐一调用移除单个Observe的方法。</p>
+<h3 id="LIfecycleBoundObserverl-类-和-AlwaysActiveObserver-类"><a href="#LIfecycleBoundObserverl-类-和-AlwaysActiveObserver-类" class="headerlink" title="LIfecycleBoundObserverl 类 和 AlwaysActiveObserver 类"></a>LIfecycleBoundObserverl 类 和 AlwaysActiveObserver 类</h3><p>这两个类就是上面我们包装形成wrapper，他们都继承了ObserWrapper。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">LifecycleBoundObserver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ObserverWrapper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">GenericLifecycleObserver</span> &#123;<br>    <span class="hljs-meta">@NonNull</span><br>    <span class="hljs-keyword">final</span> LifecycleOwner mOwner;<br><br>    LifecycleBoundObserver(<span class="hljs-meta">@NonNull</span> LifecycleOwner owner, Observer&lt;? <span class="hljs-built_in">super</span> T&gt; observer) &#123;<br>        <span class="hljs-built_in">super</span>(observer);<br>        mOwner = owner;<br>    &#125;<br><span class="hljs-comment">//活动态，返回true</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">shouldBeActive</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> mOwner.getLifecycle().getCurrentState().isAtLeast(STARTED);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onStateChanged</span><span class="hljs-params">(LifecycleOwner source, Lifecycle.Event event)</span> &#123;<br>        <span class="hljs-keyword">if</span> (mOwner.getLifecycle().getCurrentState() == DESTROYED) &#123;<br>            removeObserver(mObserver);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        activeStateChanged(shouldBeActive());<br>    &#125;<br><span class="hljs-comment">//判断当前的owner是绑定的owner</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">isAttachedTo</span><span class="hljs-params">(LifecycleOwner owner)</span> &#123;<br>        <span class="hljs-keyword">return</span> mOwner == owner;<br>    &#125;<br><span class="hljs-comment">//分离观察者和生命周期拥有者</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">detachObserver</span><span class="hljs-params">()</span> &#123;<br>        mOwner.getLifecycle().removeObserver(<span class="hljs-built_in">this</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>LifecycleBoundObserver类里面的方法都是继承ObserverWrapper抽象类或者实现GenericLifecycleObserver接口的方法。实现GenericLifecycleObserver的onStateChanged（）方法是LiveData能够观察生命周期的原因，而且使用LiveData不会发生内存泄露，当生命周期处于destoryed状态时候，会移除Observe。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AlwaysActiveObserver</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ObserverWrapper</span> &#123;<br><br>    AlwaysActiveObserver(Observer&lt;? <span class="hljs-built_in">super</span> T&gt; observer) &#123;<br>        <span class="hljs-built_in">super</span>(observer);<br>    &#125;<br><span class="hljs-comment">//这里默认返回true，观察者一直收到回调</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">shouldBeActive</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="LiveData里面的postValue-和-setValue分析"><a href="#LiveData里面的postValue-和-setValue分析" class="headerlink" title="LiveData里面的postValue 和 setValue分析"></a>LiveData里面的postValue 和 setValue分析</h3><p>这两个方法是用来更新数据的，使用postValue 和 setValue传递数据，在onChange（）方法里面传入数据参数，进行更新。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//子线程</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">postValue</span><span class="hljs-params">(T value)</span> &#123;<br>    <span class="hljs-type">boolean</span> postTask;<br>    <span class="hljs-keyword">synchronized</span> (mDataLock) &#123;<br>        postTask = mPendingData == NOT_SET;<br>        mPendingData = value;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!postTask) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    ArchTaskExecutor.getInstance().postToMainThread(mPostValueRunnable);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我没有贴全部的代码。<code>ArchTaskExecutor.getInstance().postToMainThread(mPostValueRunnable);</code>很显然这个是把数据又传递回主线程，在主线程中，又会调用setValue（）方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//主线程</span><br><span class="hljs-meta">@MainThread</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setValue</span><span class="hljs-params">(T value)</span> &#123;<br>    assertMainThread(<span class="hljs-string">&quot;setValue&quot;</span>);<br>    mVersion++;<br>    mData = value;<br>    dispatchingValue(<span class="hljs-literal">null</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>主线程检查，赋值，分发的操作，主要的逻辑在dispatchingValue（）方法中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> <span class="hljs-type">Object</span> <span class="hljs-variable">mData</span> <span class="hljs-operator">=</span> NOT_SET;<br></code></pre></td></tr></table></figure>
+
+<p>这里需要提一个很重要的变量mData，存放数据的变量，可以看到它可以接受Object类型的数据，而且他是volatile类型，对于这个类型的变量，编译器会直接从原始的内存地址进行存取。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs jAVA"><span class="hljs-meta">@SuppressWarnings(&quot;WeakerAccess&quot;)</span> <span class="hljs-comment">/* synthetic access */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">dispatchingValue</span><span class="hljs-params">(<span class="hljs-meta">@Nullable</span> ObserverWrapper initiator)</span> &#123;<br><span class="hljs-comment">// mDispatchingValue的判断主要是为了解决并发调用dispatchingValue的情况</span><br><span class="hljs-comment">// 当对应数据的观察者在执行的过程中, 如有新的数据变更, 则不会再次通知到观察者。所以观察者内的执行不应进行耗时工作</span><br>    <span class="hljs-keyword">if</span> (mDispatchingValue) &#123;<br>        <span class="hljs-comment">//标记当前分发无效</span><br>        mDispatchInvalidated = <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">//标记正在分发</span><br>    mDispatchingValue = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">do</span> &#123;<br>        mDispatchInvalidated = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (initiator != <span class="hljs-literal">null</span>) &#123;<br>            considerNotify(initiator);<br>            initiator = <span class="hljs-literal">null</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">for</span> (Iterator&lt;Map.Entry&lt;Observer&lt;? <span class="hljs-built_in">super</span> T&gt;, ObserverWrapper&gt;&gt; iterator =<br>                    mObservers.iteratorWithAdditions(); iterator.hasNext(); ) &#123;<br>                considerNotify(iterator.next().getValue());<br>                <span class="hljs-keyword">if</span> (mDispatchInvalidated) &#123;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">while</span> (mDispatchInvalidated);<br>    mDispatching<br></code></pre></td></tr></table></figure>
+
+<p>确实很复杂，但是我们只需要理解它最终是调用了considerNotify（）方法来分发我们的mData。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">considerNotify</span><span class="hljs-params">(ObserverWrapper observer)</span> &#123;<br>    <span class="hljs-comment">//检查活跃状态</span><br>    <span class="hljs-keyword">if</span> (!observer.mActive) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">// Check latest state b4 dispatch. Maybe it changed state but we didn&#x27;t get the event yet.</span><br>    <span class="hljs-comment">//</span><br>    <span class="hljs-comment">// we still first check observer.active to keep it as the entrance for events. So even if</span><br>    <span class="hljs-comment">// the observer moved to an active state, if we&#x27;ve not received that event, we better not</span><br>    <span class="hljs-comment">// notify for a more predictable notification order.</span><br>    <span class="hljs-keyword">if</span> (!observer.shouldBeActive()) &#123;<br>        observer.activeStateChanged(<span class="hljs-literal">false</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">//检查版本号</span><br>    <span class="hljs-comment">//每次setValue，version都会加一，当它超过我们的预设版本后，直接返回，防止我们多次调用onChange方法。</span><br>    <span class="hljs-keyword">if</span> (observer.mLastVersion &gt;= mVersion) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    observer.mLastVersion = mVersion;<br>    <span class="hljs-comment">//noinspection unchecked</span><br>    observer.mObserver.onChanged((T) mData);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当上面的onChange（）方法相当眼熟啊！这里收到了mData变量。</p>
+<h2 id="自定义LiveData时候会使用的方法："><a href="#自定义LiveData时候会使用的方法：" class="headerlink" title="自定义LiveData时候会使用的方法："></a>自定义LiveData时候会使用的方法：</h2><p>void onActive ()<br>Called when the number of active observers change to 1 from 0.<br>This callback can be used to know that this LiveData is being used thus should be kept up to date.</p>
+<p>当这个方法被调用时，表示LiveData的观察者数量从0变为了1，这时就我们的位置监听来说，就应该注册我们的时间监听了。</p>
+<p>void onInactive ()<br>Called when the number of active observers change from 1 to 0.<br>This does not mean that there are no observers left, there may still be observers but their lifecycle states aren’t STARTED or RESUMED (like an Activity in the back stack).<br>You can check if there are observers via hasObservers().</p>
+<p>这个方法被调用时，表示LiveData的观察者数量变为了0，既然没有了观察者，也就没有理由再做监听，此时我们就应该将位置监听移除</p>
+<h2 id="LiveData-数据监听机制流程图"><a href="#LiveData-数据监听机制流程图" class="headerlink" title="LiveData 数据监听机制流程图"></a>LiveData 数据监听机制流程图</h2><p><img src="/2023/03/28/LiveData%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATGVlU3R1ZGlvXw==,size_20,color_FFFFFF,t_70,g_se,x_16.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/">#Android进阶知识</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LiveData的原理和使用</div>
+      <div>http://example.com/2023/03/28/LiveData的原理和使用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>路茜</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/28/Android%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/" title="Android动态申请权限">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android动态申请权限</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/28/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/" title="匿名内部类">
+                        <span class="hidden-mobile">匿名内部类</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+<script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="/js/model.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
