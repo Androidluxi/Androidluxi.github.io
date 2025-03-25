@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lux">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="预览+图片拍摄实时预览1.编辑activity_main layout 文件： 123456789101112131415161718192021222324252627&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;&lt;androidx.constraintlayout.widget.ConstraintLayo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CameraX实时预览+拍照">
+<meta property="og:url" content="https://tangerine-kitten-lux.netlify.app/CameraX%E5%AE%9E%E6%97%B6%E9%A2%84%E8%A7%88-%E6%8B%8D%E7%85%A7/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="预览+图片拍摄实时预览1.编辑activity_main layout 文件： 123456789101112131415161718192021222324252627&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;&lt;androidx.constraintlayout.widget.ConstraintLayo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tangerine-kitten-lux.netlify.app/img/8.jpg">
+<meta property="article:published_time" content="2023-05-26T08:48:58.000Z">
+<meta property="article:modified_time" content="2025-03-23T14:23:10.161Z">
+<meta property="article:author" content="lux">
+<meta property="article:tag" content="Android进阶知识">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tangerine-kitten-lux.netlify.app/img/8.jpg">
+  
+  
+  
+  <title>CameraX实时预览+拍照 - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css# 鼠标指针.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/fluid-extention.css">
+<link rel="stylesheet" href="/css/fluid-scroll-bar.css">
+<link rel="stylesheet" href="/css/fluid-Navigation-bar-animation.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tangerine-kitten-lux.netlify.app","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>听闻风起</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CameraX实时预览+拍照"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-26 16:48" pubdate>
+          2023年5月26日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          81 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CameraX实时预览+拍照</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="预览-图片拍摄"><a href="#预览-图片拍摄" class="headerlink" title="预览+图片拍摄"></a>预览+图片拍摄</h1><h2 id="实时预览"><a href="#实时预览" class="headerlink" title="实时预览"></a>实时预览</h2><p>1.编辑<code>activity_main</code> layout 文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;.MainActivity&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/camera_capture_button&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;100dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;100dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_marginBottom</span>=<span class="hljs-string">&quot;50dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:scaleType</span>=<span class="hljs-string">&quot;fitCenter&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Take Photo&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintLeft_toLeftOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintRight_toRightOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:elevation</span>=<span class="hljs-string">&quot;2dp&quot;</span> /&gt;</span><br>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">androidx.camera.view.PreviewView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/viewFinder&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span> /&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-请求-CameraProvider"><a href="#1-请求-CameraProvider" class="headerlink" title="1.请求 CameraProvider"></a>1.请求 CameraProvider</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">ListenableFuture&lt;ProcessCameraProvider&gt; cameraProviderFuture = ProcessCameraProvider.getInstance(<span class="hljs-built_in">this</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-检查-CameraProvider-可用性"><a href="#2-检查-CameraProvider-可用性" class="headerlink" title="2.检查 CameraProvider 可用性"></a>2.检查 CameraProvider 可用性</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">cameraProviderFuture.addListener(() -&gt; &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 将你的相机和当前生命周期的所有者绑定所需的对象</span><br>        <span class="hljs-type">ProcessCameraProvider</span> <span class="hljs-variable">cameraProvider</span> <span class="hljs-operator">=</span> cameraProviderFuture.get();<br>        <span class="hljs-comment">//绑定相机，具体代码见下面部分</span><br>        bindPreview(cameraProvider);<br>    &#125; <span class="hljs-keyword">catch</span> (ExecutionException | InterruptedException e) &#123;<br>        <span class="hljs-comment">// No errors need to be handled for this Future.</span><br>        <span class="hljs-comment">// This should never be reached.</span><br>    &#125;<br>&#125;, ContextCompat.getMainExecutor(<span class="hljs-built_in">this</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-选择相机并绑定生命周期和用例"><a href="#3-选择相机并绑定生命周期和用例" class="headerlink" title="3.选择相机并绑定生命周期和用例"></a>3.选择相机并绑定生命周期和用例</h3><ol>
+<li>创建 <code>Preview</code>。</li>
+<li>指定所需的相机 <code>LensFacing</code> 选项。</li>
+<li>将所选相机和任意用例绑定到生命周期。</li>
+<li>将 <code>Preview</code> 连接到 <code>PreviewView</code>。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">bindPreview</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> ProcessCameraProvider cameraProvider)</span> &#123;<br>    <br>    <span class="hljs-comment">//创建一个Preview 实例，并设置该实例的 surface 提供者（provider）。</span><br>    <span class="hljs-type">Preview</span> <span class="hljs-variable">preview</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Preview</span>.Builder().build();<br>    <span class="hljs-type">PreviewView</span> <span class="hljs-variable">previewView</span> <span class="hljs-operator">=</span> (PreviewView)findViewById(R.id.viewFinder);<br>    preview.setSurfaceProvider(previewView.getSurfaceProvider());<br>    <br>    <span class="hljs-comment">//选择默认的摄像头（后置/前置）</span><br>    <span class="hljs-type">CameraSelector</span> <span class="hljs-variable">cameraSelector</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CameraSelector</span>.Builder()<br>            .requireLensFacing(CameraSelector.LENS_FACING_BACK)<br>            .build();<br><br>    <span class="hljs-comment">// 重新绑定用例前先解绑</span><br>	processCameraProvider.unbindAll();<br>    <span class="hljs-comment">// 绑定用例至相机</span><br>    <span class="hljs-type">Camera</span> <span class="hljs-variable">camera</span> <span class="hljs-operator">=</span> cameraProvider.bindToLifecycle((LifecycleOwner)<span class="hljs-built_in">this</span>, cameraSelector, preview);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>到此为止：如何实现实时预览已经说明完毕。</p>
+<h2 id="图片拍摄："><a href="#图片拍摄：" class="headerlink" title="图片拍摄："></a>图片拍摄：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 创建拍照所需的实例</span><br>          imageCapture = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ImageCapture</span>.Builder().setTargetRotation(mViewFinder.getDisplay().getRotation()).build();<br><br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>首先，检查 <code>imageCapture</code> 对象是否已经实例化，以避免空指针异常。</li>
+<li>创建一个带时间戳的输出文件，用于保存照片，确保文件名的唯一性。</li>
+<li>创建 <code>OutputFileOptions</code> 对象，用于指定照片的输出方式。</li>
+<li>调用 <code>takePicture()</code> 方法进行拍照操作，传入输出文件选项和保存照片的回调函数。</li>
+<li>在保存照片的回调函数中，可以获取保存的照片的 <code>Uri</code>，显示成功的提示消息，并将消息打印到日志中。</li>
+<li>如果在保存照片时发生错误，会在回调函数的 <code>onError()</code> 方法中进行处理，打印错误消息到日志中。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java">.  <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 拍照，并保存照片</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@author</span> luxi</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@date</span> 2023/5/23 14:09</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">takePhoto</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// 确保imageCapture 已经被实例化, 否则程序将可能崩溃</span><br>        <span class="hljs-keyword">if</span> (imageCapture != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-comment">// 创建带时间戳的输出文件以保存图片，带时间戳是为了保证文件名唯一</span><br>            <span class="hljs-type">File</span> <span class="hljs-variable">photoFile</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(outputDirectory,<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(Configuration.FILENAME_FORMAT,<br>                            Locale.SIMPLIFIED_CHINESE).format(System.currentTimeMillis())<br>                            + <span class="hljs-string">&quot;.jpg&quot;</span>);<br><br>            <span class="hljs-comment">// 创建 output option 对象，用以指定照片的输出方式</span><br>            ImageCapture.<span class="hljs-type">OutputFileOptions</span> <span class="hljs-variable">outputFileOptions</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ImageCapture</span>.OutputFileOptions<br>                    .Builder(photoFile)<br>                    .build();<br><br>            <span class="hljs-comment">// 执行takePicture（拍照）方法</span><br>            imageCapture.takePicture(outputFileOptions,<br>                    ContextCompat.getMainExecutor(<span class="hljs-built_in">this</span>),<br>                    <span class="hljs-comment">// 保存照片时的回调</span><br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ImageCapture</span>.OnImageSavedCallback() &#123;<br>                        <span class="hljs-meta">@Override</span><br>                        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onImageSaved</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> ImageCapture.OutputFileResults outputFileResults)</span> &#123;<br>                            <span class="hljs-type">Uri</span> <span class="hljs-variable">savedUri</span> <span class="hljs-operator">=</span> Uri.fromFile(photoFile);<br>                            <span class="hljs-type">String</span> <span class="hljs-variable">msg</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;照片捕获成功! &quot;</span> + savedUri;<br>                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();<br>                            Log.d(Configuration.TAG, msg);<br>                        &#125;<br><br>                        <span class="hljs-meta">@Override</span><br>                        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onError</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> ImageCaptureException exception)</span> &#123;<br>                            Log.e(Configuration.TAG, <span class="hljs-string">&quot;Photo capture failed: &quot;</span> + exception.getMessage());<br>                        &#125;<br>                    &#125;);<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="特殊功能实现："><a href="#特殊功能实现：" class="headerlink" title="特殊功能实现："></a>特殊功能实现：</h2><h4 id="前后摄像头的切换"><a href="#前后摄像头的切换" class="headerlink" title="前后摄像头的切换"></a>前后摄像头的切换</h4><p>我们之前使用<code>cameraProvider.bindToLifecycle()</code>的时候，有一个参数是<code>CameraSelector</code>。<br><code>CameraX</code>默认给我们提供了前置摄像头和后置摄像头的<code>CameraSelector</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//选择默认的摄像头（后置/前置）</span><br> <span class="hljs-type">CameraSelector</span> <span class="hljs-variable">cameraSelector</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CameraSelector</span>.Builder()<br>         .requireLensFacing(CameraSelector.LENS_FACING_BACK)<br>         .build();<br></code></pre></td></tr></table></figure>
+
+<p>切换摄像头的时候，就是重新调用一下<code>bindPreview</code>方法，传入新的<code>cameraSelector</code>值就好了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">   <span class="hljs-comment">//解除所有绑定，防止CameraProvider重复绑定到Lifecycle发生异常</span><br>processCameraProvider.unbindAll();<br>   <span class="hljs-comment">// 绑定用例至相机</span><br>   <span class="hljs-type">Camera</span> <span class="hljs-variable">camera</span> <span class="hljs-operator">=</span> cameraProvider.bindToLifecycle((LifecycleOwner)<span class="hljs-built_in">this</span>, cameraSelector, preview);<br></code></pre></td></tr></table></figure>
+
+<h4 id="手势放大缩小"><a href="#手势放大缩小" class="headerlink" title="手势放大缩小"></a>手势放大缩小</h4><p>这里使用<code>ScaleGestureDetector</code>类来实现手势缩放功能。</p>
+<p><code>ScaleGestureDetector</code>用于处理缩放的工具类，用法与GestureDetector类似，都是通过onTouchEvent()关联相应的MotionEvent的。使用该类时，用户需要传入一个完整的连续不断地motion事件（包含ACTION_DOWN,ACTION_MOVE和ACTION_UP事件）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java">scaleGestureDetector = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ScaleGestureDetector</span>(<span class="hljs-built_in">this</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ScaleGestureDetector</span>. OnScaleGestureListener() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">onScale</span><span class="hljs-params">(ScaleGestureDetector detector)</span> &#123;<br>        <span class="hljs-comment">//你可以根据缩放手势的因子来执行适当的操作。当前的代码中，我们返回了 true，表示我们处理了                     缩放操作，并消费了该事件。</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">onScaleBegin</span><span class="hljs-params">(ScaleGestureDetector detector)</span> &#123;<br>    <span class="hljs-comment">//返回true，你可以执行一些准备工作，或者返回 false 来指示不处理缩放操作。一般都设为true</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onScaleEnd</span><span class="hljs-params">(ScaleGestureDetector detector)</span> &#123;<br>    <span class="hljs-comment">//这里是缩放结束后做的操作，具体的使用效果可以参考微信，你把图片缩小之后（80%），你松手，图片会回               弹到原来的大小。 </span><br><br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>在该方法中，我们首先获取缩放因子 <code>scaleFactor</code>，它表示缩放手势的影响因子。</li>
+<li>我们获取当前的缩放状态，然后获取当前的缩放比例</li>
+<li>我们获取新的缩放级别。<code>Math.max()</code> 和 <code>Math.min()</code> 方法来限制缩放级别在最小值和最大值之间</li>
+<li>将新的缩放级别应用到相机控制器中，并打印出当前的缩放比例。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">onScale</span><span class="hljs-params">(ScaleGestureDetector detector)</span> &#123;<br>    <span class="hljs-comment">//缩放级别的影响因子</span><br>    <span class="hljs-type">float</span> <span class="hljs-variable">scaleFactor</span> <span class="hljs-operator">=</span> detector.getScaleFactor();<br>    LiveData&lt;ZoomState&gt; zoomState = mCameraInfo.getZoomState();<br>    <span class="hljs-comment">//返回当前缩放比例</span><br>    <span class="hljs-type">float</span> <span class="hljs-variable">zoomRatio</span> <span class="hljs-operator">=</span> zoomState.getValue().getZoomRatio();<br>    <span class="hljs-type">float</span> <span class="hljs-variable">minZoomRatio</span> <span class="hljs-operator">=</span> zoomState.getValue().getMinZoomRatio();<br>    <span class="hljs-type">float</span> <span class="hljs-variable">maxZoomRatio</span> <span class="hljs-operator">=</span> zoomState.getValue().getMaxZoomRatio();<br>    <span class="hljs-comment">//根据缩放手势的因子调整缩放级别</span><br>    <span class="hljs-type">float</span> <span class="hljs-variable">newZoomLevel</span> <span class="hljs-operator">=</span> zoomRatio * scaleFactor;<br>    <span class="hljs-comment">//限制缩放级别在最小值和最大值之间</span><br>    newZoomLevel = Math.max(<span class="hljs-number">1.0f</span>, Math.min(newZoomLevel, <span class="hljs-number">10</span>));<br><br>     mCameraControl.setZoomRatio(newZoomLevel);<br>     Log.d(TAG, <span class="hljs-string">&quot;当前缩放比例: &quot;</span> + newZoomLevel);<br>     <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="点击手动对焦"><a href="#点击手动对焦" class="headerlink" title="点击手动对焦"></a>点击手动对焦</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs java">mGestureDetector = <span class="hljs-keyword">new</span> <span class="hljs-title class_">GestureDetector</span>(<span class="hljs-built_in">this</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">GestureDetector</span>. SimpleOnGestureListener() &#123;<br>         <span class="hljs-comment">//点击</span><br>         <span class="hljs-meta">@SuppressLint(&quot;RestrictedApi&quot;)</span><br>         <span class="hljs-meta">@Override</span><br>         <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">onSingleTapUp</span><span class="hljs-params">(MotionEvent e)</span> &#123;<br>             <span class="hljs-type">float</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> e.getX();<br>             <span class="hljs-type">float</span> <span class="hljs-variable">y</span> <span class="hljs-operator">=</span> e.getY();<br>             <span class="hljs-type">MeteringPointFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> mViewFinder.getMeteringPointFactory();<br>             <span class="hljs-type">MeteringPoint</span> <span class="hljs-variable">point</span> <span class="hljs-operator">=</span> factory.createPoint(x, y);<br>             <span class="hljs-type">FocusMeteringAction</span> <span class="hljs-variable">action</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FocusMeteringAction</span>.Builder(point, FocusMeteringAction.FLAG_AF).build();<br>             <span class="hljs-comment">//启动对焦和测光</span><br>             ListenableFuture&lt;FocusMeteringResult&gt; focusMeteringResultListenableFuture = mCameraControl.startFocusAndMetering(action);<br>             focusMeteringResultListenableFuture.addListener(() -&gt; &#123;<br>                 <span class="hljs-keyword">try</span> &#123;<br>                     <span class="hljs-type">FocusMeteringResult</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> focusMeteringResultListenableFuture.get();<br>                     <span class="hljs-keyword">if</span> (result.isFocusSuccessful()) &#123;<br>                         Log.d(TAG, <span class="hljs-string">&quot;对焦成功&quot;</span>);<br><br>                         runOnUiThread(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>                             <span class="hljs-meta">@Override</span><br>                             <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                                 <span class="hljs-comment">//自定义矩形方框，对焦成功显示</span><br>                                 customBoxView.setBoxPosition(x, y);<br>                                 <span class="hljs-comment">//这是toast显示对焦成功</span><br>                                 showFocusSuccessToast();<br>                             &#125;<br>                         &#125;);<br><br>                     &#125; <span class="hljs-keyword">else</span> &#123;<br>                         Log.d(TAG, <span class="hljs-string">&quot;对焦失败&quot;</span>);<br>                         showFocusFailedToast();<br>                     &#125;<br>                 &#125; <span class="hljs-keyword">catch</span> (ExecutionException | InterruptedException ex) &#123;<br>                     Log.e(<span class="hljs-string">&quot;YourCameraActivity&quot;</span>, <span class="hljs-string">&quot;对焦操作失败: &quot;</span> + ex.getMessage());<br>                 &#125;<br>             &#125;, CameraXExecutors.directExecutor());<br><br><br>             <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>         &#125;<br><br>     &#125;);<br></code></pre></td></tr></table></figure>
+
+<p>为 <code>mViewFinder</code> 设置了一个触摸监听器，并在触摸事件中调用了 <code>scaleGestureDetector</code> 和 <code>mGestureDetector</code> 的对应方法。<code>scaleGestureDetector.onTouchEvent(event)</code> 是用于处理缩放手势的触摸事件，它将触摸事件传递给 <code>scaleGestureDetector</code> 对象来处理缩放操作。<code>mGestureDetector.onTouchEvent(event)</code> 是用于处理其他手势的触摸事件，它将触摸事件传递给 <code>mGestureDetector</code> 对象来处理其他手势操作，比如单击操作或者双击等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">mViewFinder = (PreviewView) findViewById(R.id.viewFinder); <br>mViewFinder.setOnTouchListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">View</span>.OnTouchListener() &#123;<br>                <span class="hljs-meta">@Override</span><br>                <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">onTouch</span><span class="hljs-params">(View v, MotionEvent event)</span> &#123;<br>                    scaleGestureDetector.onTouchEvent(event);<br>                    mGestureDetector.onTouchEvent(event);<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>                &#125;<br>            &#125;);<br></code></pre></td></tr></table></figure>
+
+<h4 id="手机紧急晃动拍照"><a href="#手机紧急晃动拍照" class="headerlink" title="手机紧急晃动拍照"></a>手机紧急晃动拍照</h4><p>使用加速度传感器（Accelerometer Sensor）来检测手机的晃动，并在达到一定阈值时触发拍照操作。</p>
+<ol>
+<li>注册加速度传感器监听</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">SensorManager</span> <span class="hljs-variable">sensorManager</span> <span class="hljs-operator">=</span> (SensorManager) getSystemService(Context.SENSOR_SERVICE);<br><span class="hljs-type">Sensor</span> <span class="hljs-variable">accelerometerSensor</span> <span class="hljs-operator">=</span> sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);<br><br>sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建一个 SensorEventListener 对象，并实现其 onSensorChanged() 方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-type">SensorEventListener</span> <span class="hljs-variable">sensorEventListener</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SensorEventListener</span>() &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">float</span> <span class="hljs-variable">SHAKE_THRESHOLD</span> <span class="hljs-operator">=</span> <span class="hljs-number">2.5f</span>; <span class="hljs-comment">// 设置晃动的阈值</span><br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> lastX;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> lastY;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> lastZ;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">long</span> lastShakeTime;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onSensorChanged</span><span class="hljs-params">(SensorEvent event)</span> &#123;<br>        <span class="hljs-type">float</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> event.values[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">float</span> <span class="hljs-variable">y</span> <span class="hljs-operator">=</span> event.values[<span class="hljs-number">1</span>];<br>        <span class="hljs-type">float</span> <span class="hljs-variable">z</span> <span class="hljs-operator">=</span> event.values[<span class="hljs-number">2</span>];<br><br>        <span class="hljs-comment">// 计算加速度的变化量</span><br>        <span class="hljs-type">float</span> <span class="hljs-variable">deltaX</span> <span class="hljs-operator">=</span> x - lastX;<br>        <span class="hljs-type">float</span> <span class="hljs-variable">deltaY</span> <span class="hljs-operator">=</span> y - lastY;<br>        <span class="hljs-type">float</span> <span class="hljs-variable">deltaZ</span> <span class="hljs-operator">=</span> z - lastZ;<br><br>        <span class="hljs-comment">// 更新上一次的加速度值</span><br>        lastX = x;<br>        lastY = y;<br>        lastZ = z;<br><br>        <span class="hljs-comment">// 计算当前加速度的模</span><br>        <span class="hljs-type">float</span> <span class="hljs-variable">acceleration</span> <span class="hljs-operator">=</span> (<span class="hljs-type">float</span>) Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);<br><br>        <span class="hljs-comment">// 判断是否达到晃动阈值</span><br>        <span class="hljs-type">long</span> <span class="hljs-variable">currentTime</span> <span class="hljs-operator">=</span> System.currentTimeMillis();<br>        <span class="hljs-keyword">if</span> (acceleration &gt; SHAKE_THRESHOLD &amp;&amp; currentTime - lastShakeTime &gt; <span class="hljs-number">1000</span>) &#123;<br>            <span class="hljs-comment">// 触发拍照操作</span><br>            takePhoto();<br>            lastShakeTime = currentTime;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onAccuracyChanged</span><span class="hljs-params">(Sensor sensor, <span class="hljs-type">int</span> accuracy)</span> &#123;<br>        <span class="hljs-comment">// 当传感器的精度发生变化时触发，不需要处理</span><br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>销毁监听</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onDestroy</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">super</span>.onDestroy();<br>    sensorManager.unregisterListener(sensorEventListener);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="给拍照图片加水印"><a href="#给拍照图片加水印" class="headerlink" title="给拍照图片加水印"></a>给拍照图片加水印</h4><p>在 <code>public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) &#123;&#125;</code>里调用下面的方法。WaterMarkingUtility是一个添加水印的类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addWatermarkToPhoto</span><span class="hljs-params">(File photoFile)</span> <span class="hljs-keyword">throws</span> FileNotFoundException &#123;<br>     <span class="hljs-type">Bitmap</span> <span class="hljs-variable">originalBitmap</span> <span class="hljs-operator">=</span> BitmapFactory.decodeFile(photoFile.getAbsolutePath());<br>     <span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">outputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(photoFile);<br><br>     <span class="hljs-type">Bitmap</span> <span class="hljs-variable">bitmap</span> <span class="hljs-operator">=</span> WaterMarkingUtility.drawTextToCenter(originalBitmap, <span class="hljs-string">&quot;水印&quot;</span>, <span class="hljs-number">500</span>);<br>     bitmap.compress(Bitmap.CompressFormat.JPEG, <span class="hljs-number">100</span>, outputStream);<br> &#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Android/" class="category-chain-item">Android</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/">#Android进阶知识</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CameraX实时预览+拍照</div>
+      <div>https://tangerine-kitten-lux.netlify.app/CameraX实时预览-拍照/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lux</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/adb%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" title="adb基本命令">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">adb基本命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/CameraX-%E7%9A%84%E5%9F%BA%E7%A1%80/" title="CameraX 的基础">
+                        <span class="hidden-mobile">CameraX 的基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+<script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="/js/model.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

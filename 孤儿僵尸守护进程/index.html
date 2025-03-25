@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="lux">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.进程讲到进程，我们要先了解一下另一个概念：程序。 程序说白了就是躺在电脑硬盘上的一个文件而已（如同硬盘女神一样），在被 CPU 执行之前，它啥也做不了。 当程序被执行之后，它运行的实例就称为进程 。一个程序可以对应多个进程。 进程是系统的工作单元。系统由多个进程组成，其中有的是操作系统进程（执行系统代码），其他的是用户进程（执行用户代码）。所有这些进程都会并发执行，例如通过在单 CPU 上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="孤儿&#x2F;僵尸&#x2F;守护进程">
+<meta property="og:url" content="https://tangerine-kitten-lux.netlify.app/%E5%AD%A4%E5%84%BF%E5%83%B5%E5%B0%B8%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="1.进程讲到进程，我们要先了解一下另一个概念：程序。 程序说白了就是躺在电脑硬盘上的一个文件而已（如同硬盘女神一样），在被 CPU 执行之前，它啥也做不了。 当程序被执行之后，它运行的实例就称为进程 。一个程序可以对应多个进程。 进程是系统的工作单元。系统由多个进程组成，其中有的是操作系统进程（执行系统代码），其他的是用户进程（执行用户代码）。所有这些进程都会并发执行，例如通过在单 CPU 上">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/02/19/6W3goKc7ePnaCwd.png">
+<meta property="article:published_time" content="2024-01-21T15:08:12.000Z">
+<meta property="article:modified_time" content="2025-03-25T09:48:31.664Z">
+<meta property="article:author" content="lux">
+<meta property="article:tag" content="进程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2024/02/19/6W3goKc7ePnaCwd.png">
+  
+  
+  
+  <title>孤儿/僵尸/守护进程 - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css# 鼠标指针.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/fluid-extention.css">
+<link rel="stylesheet" href="/css/fluid-scroll-bar.css">
+<link rel="stylesheet" href="/css/fluid-Navigation-bar-animation.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"tangerine-kitten-lux.netlify.app","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>听闻风起</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="孤儿/僵尸/守护进程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-21 23:08" pubdate>
+          2024年1月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">孤儿/僵尸/守护进程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <meta name="referrer" content="no-referrer">
+
+<h1 id="1-进程"><a href="#1-进程" class="headerlink" title="1.进程"></a>1.进程</h1><p>讲到进程，我们要先了解一下另一个概念：<code>程序</code>。</p>
+<p>程序说白了就是躺在电脑硬盘上的一个文件而已（如同硬盘女神一样），在被 CPU 执行之前，它啥也做不了。</p>
+<p>当程序被执行之后，它运行的实例就称为<code>进程</code> 。一个程序可以对应多个进程。</p>
+<p>进程是系统的工作单元。系统由多个进程组成，其中有的是操作系统进程（执行系统代码），其他的是用户进程（执行用户代码）。所有这些进程都会并发执行，例如通过在单 CPU 上采用多路复用来实现。</p>
+<p>你可以使用 <span class="label label-primary">ps</span>命令查看 Linux 系统中的所有进程 。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css">$ ps -ax<br>        PID TTY         STAT   <span class="hljs-selector-tag">TIME</span> COMMAND<br>        <span class="hljs-number">1</span> ?     Ss      <span class="hljs-number">0</span>:<span class="hljs-number">01</span> /usr/lib/systemd/systemd rhgb --switched-root --sys<br>        <span class="hljs-number">2</span> ?     S       <span class="hljs-number">0</span>:<span class="hljs-number">00</span> [kthreadd]<br>        <span class="hljs-number">3</span> ?     I&lt;      <span class="hljs-number">0</span>:<span class="hljs-number">00</span> [rcu_gp]<br>        <span class="hljs-number">4</span> ?     I&lt;      <span class="hljs-number">0</span>:<span class="hljs-number">00</span> [rcu_par_gp]<br></code></pre></td></tr></table></figure>
+
+<p>当一个进程调用 <code>fork</code> 函数生成另一个进程，原进程就称为父进程，新生成的进程则称为子进程。</p>
+<p>Linux 系统中这样父子进程非常多，我们可以使用 <code>pstree</code> 命令查看系统上的进程「谱系」。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs scss">$ pstree -psn<br><span class="hljs-built_in">systemd</span>(<span class="hljs-number">1</span>)─┬─<span class="hljs-built_in">systemd-journal</span>(<span class="hljs-number">952</span>)<br>        ├─<span class="hljs-built_in">systemd-udevd</span>(<span class="hljs-number">963</span>)<br>        ├─<span class="hljs-built_in">systemd-oomd</span>(<span class="hljs-number">1137</span>)<br>        ├─<span class="hljs-built_in">systemd-resolve</span>(<span class="hljs-number">1138</span>)<br>        ├─<span class="hljs-built_in">systemd-userdbd</span>(<span class="hljs-number">1139</span>)─┬─<span class="hljs-built_in">systemd-userwor</span>(<span class="hljs-number">12707</span>)<br>        │                     ├─<span class="hljs-built_in">systemd-userwor</span>(<span class="hljs-number">12714</span>)<br>        │                     └─<span class="hljs-built_in">systemd-userwor</span>(<span class="hljs-number">12715</span>)<br>        ├─<span class="hljs-built_in">auditd</span>(<span class="hljs-number">1140</span>)───&#123;auditd&#125;(<span class="hljs-number">1141</span>)<br>        ├─<span class="hljs-built_in">dbus-broker-lau</span>(<span class="hljs-number">1164</span>)───<span class="hljs-built_in">dbus-broker</span>(<span class="hljs-number">1165</span>)<br>        ├─<span class="hljs-built_in">avahi-daemon</span>(<span class="hljs-number">1166</span>)───<span class="hljs-built_in">avahi-daemon</span>(<span class="hljs-number">1196</span>)<br>        ├─<span class="hljs-built_in">bluetoothd</span>(<span class="hljs-number">1167</span>)<br></code></pre></td></tr></table></figure>
+
+<p>每个进程在系统中都被分配了一个编号。在这所有的进程中，有个非常特殊的进程，它的 ID 号是 1 。它是系统在引导过程中执行的第一个进程，PID 1 之后的每个后续进程都是它的后代。</p>
+<h1 id="2-孤儿进程"><a href="#2-孤儿进程" class="headerlink" title="2. 孤儿进程"></a>2. 孤儿进程</h1><ul>
+<li>孤儿进程是一个比父进程存活时间更长的进程</li>
+<li>孤立进程被init所采用</li>
+<li>Init等待被收养的子进程终止</li>
+<li>采用孤儿进程后，getppid()返回init的PID；通常下<strong>init的PID为1</strong></li>
+<li>在使用upstart作为init system的系统上，或者在某些配置中使用systemd的系统上，情况是不同的</li>
+</ul>
+<p>父进程如果不等待子进程退出，在子进程之前就结束了自己的“生命”此时的子进程叫做孤儿进程。&#x3D;&#x3D;&#x3D;&#x3D;<strong>爹没了</strong><br>Linux避免系统存在过多的孤儿进程，init进程收留孤儿进程，变成孤儿进程的父进程。&#x3D;&#x3D;&#x3D;&#x3D;<strong>init养父</strong></p>
+<h1 id="3-僵尸进程"><a href="#3-僵尸进程" class="headerlink" title="3.僵尸进程"></a>3.僵尸进程</h1><div class="note note-success">
+            <p>一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中。这种进程称之为僵尸进程。 </p>
+          </div>
+
+<p><strong>注意：</strong></p>
+<p>​			僵尸进程还会消耗一定的系统资源，并且还保留一些概要信息供父进程查询子进程的状态可以提供父进程想要的信息。一旦父进程得到想要的信息，僵尸进程就会结束。</p>
+<h2 id="3-1僵尸进程怎样产生的："><a href="#3-1僵尸进程怎样产生的：" class="headerlink" title="3.1僵尸进程怎样产生的："></a>3.1<strong>僵尸进程怎样产生的：</strong></h2><p>一个进程在调用exit命令结束自己的生命的时候，其实它并没有真正的被销毁，而是留下一个称为僵尸进程（Zombie）的数据结构（系统调用 exit，它的作用是使进程退出，但也仅仅限于将一个正常的进程变成一个僵尸进程，并不能将其完全销毁）。<br>在Linux进程的状态中，僵尸进程是非常特殊的一种，它已经放弃了几乎所有内存空间，没有任何可执行代码，也不能被调度，仅仅在进程列表中保留一个位置，记载该进程的退出状态等信息供其他进程收集，除此之外，僵尸进程不再占有任何内存空间。它需要它的父进程来为它收尸，如果他的父进程没安装 SIGCHLD信号处理函数调用wait或waitpid()等待子进程结束，又没有显式忽略该信号，那么它就一直保持僵尸状态，如果这时父进程结束了， 那么init进程自动会接手这个子进程，为它收尸，它还是能被清除的。<strong>但是如果父进程是一个循环，不会结束，那么子进程就会一直保持僵尸状态，这就是 为什么系统中有时会有很多的僵尸进程。</strong></p>
+<img src="https://gitee.com/silent-learner/imgs/raw/master/imgs/%202023_Imgs/20240122003624.png" srcset="/img/loading.gif" lazyload>
+
+<h2 id="3-2-查看僵尸进程"><a href="#3-2-查看僵尸进程" class="headerlink" title="3.2 查看僵尸进程"></a>3.2 查看僵尸进程</h2><p>利用命令：<strong>ps</strong>，可以看到有标记为<strong>Z</strong>的进程就是僵尸进程</p>
+<h2 id="3-3-僵尸进程的危害"><a href="#3-3-僵尸进程的危害" class="headerlink" title="3.3 僵尸进程的危害"></a>3.3 僵尸进程的危害</h2><p>内核为每个子进程保留了一个数据结构，包括进程编号、终止状态、使用CPU时间等。父进程如果处理了子进程退出的信息，内核就会释放这个数据结构，父进程如果没有处理子进程退出的信息，内核就不会释放这个数据结构，子进程的进程编号将一直被占用。系统可用的进程编号是有限的，如果产生了大量的僵尸进程，将因为没有可用的进程编号而导致系统不能产生新的进程。</p>
+<h2 id="3-4-如何杀死僵尸进程"><a href="#3-4-如何杀死僵尸进程" class="headerlink" title="3.4 如何杀死僵尸进程"></a>3.4 如何杀死僵尸进程</h2><p>对于普通进程，我们可以通过使用 <code>kill</code> 命令来杀死它们。<code>kill</code> 命令它还有几个兄弟，比如 <code>pkill</code> 和 <code>killall</code> ，虽然它们名称里都带 <code>kill</code> 这样杀气腾腾的字眼，但它们实际上是被设计为向一个或多个进程发送信号。</p>
+<p>在未指定的情况下，这几个命令默认发送的是 <code>SIGTERM</code> 信号。</p>
+<p>普通进程可以被 <code>kill</code> ，但僵尸进程是不行的。为什么？因为僵尸进程本身就已经「死」过一次了！如果还可以再「死」，那「僵尸」这个名号就没多大意义了。</p>
+<p>僵尸进程其实已经就是退出的进程，因此无法再利用kill命令杀死僵尸进程。僵尸进程的罪魁祸首是父进程没有回收它的资源，那我们可以想办法它其它进程去回收僵尸进程的资源，这个进程就是 init 进程。</p>
+<h3 id="3-4-1改写父进程，在子进程死后要为它收尸"><a href="#3-4-1改写父进程，在子进程死后要为它收尸" class="headerlink" title="3.4.1改写父进程，在子进程死后要为它收尸"></a>3.4.1改写父进程，在子进程死后要为它收尸</h3><p>具体做法是接管<strong>SIGCHLD</strong>信号。子进程死后，会发送SIGCHLD信号给父进程，父进程收到此信号后，执行waitpid()函数为子进程收尸。这是基于这样的原理：就算父进程没有调用 wait，内核也会向它发送SIGCHLD消息，尽管对的默认处理是忽略，如果想响应这个消息，可以设置一个处理函数。</p>
+<h3 id="3-4-2-把父进程杀掉"><a href="#3-4-2-把父进程杀掉" class="headerlink" title="3.4.2 把父进程杀掉"></a>3.4.2 把父进程杀掉</h3><p>父进程死后，僵尸进程成为”孤儿进程”，过继给进程init，init始终会负责清理僵尸进程。它产生的所有僵尸进程也跟着消失。<strong>僵尸进程将会导致资源浪费，而孤儿则不会。</strong></p>
+<h1 id="4-守护进程"><a href="#4-守护进程" class="headerlink" title="4.守护进程"></a>4.守护进程</h1><h2 id="4-1-定义"><a href="#4-1-定义" class="headerlink" title="4.1 定义"></a>4.1 定义</h2><ul>
+<li>守护进程是运行在后台的一种特殊进程，它独立于控制终端并且周期性地执行某种任务或循环等待处理某些事件的发生；它不需要用户输入就能运行而且提供某种服务，不是对整个系统就是对某个用户程序提供服务。Linux系统的大多数服务器就是通过守护进程实现的。</li>
+<li>守护进程一般在系统启动时开始运行，除非强行终止，否则直到系统关机才随之一起停止运行；</li>
+<li>守护进程一般都以root用户权限运行，因为要使用某些特殊的端口（1-1024）或者资源；</li>
+<li>守护进程的父进程一般都是init进程，因为它真正的父进程在fork出守护进程后就直接退出了，所以守护进程都是孤儿进程，由init接管；</li>
+<li>守护进程是非交互式程序，没有控制终端，所以任何输出，无论是向标准输出设备stdout还是标准出错设备stderr的输出都需要特殊处理。</li>
+<li>守护进程的名称通常以d结尾，比如sshd、xinetd、crond等</li>
+</ul>
+<h2 id="4-2-创建守护进程的过程："><a href="#4-2-创建守护进程的过程：" class="headerlink" title="4.2 创建守护进程的过程："></a>4.2 创建守护进程的过程：</h2><ol>
+<li><p>fork()创建子进程，父进程exit()退出</p>
+<p>这是创建守护进程的第一步。由于守护进程是脱离控制终端的，因此，完成第一步后就会在Shell终端里造成程序已经运行完毕的假象。之后的所有工作都在子进程中完成，而用户在Shell终端里则可以执行其他命令，从而在形式上做到了与控制终端的脱离，在后台工作。</p>
+</li>
+<li><p>在子进程中调用 setsid() 函数创建新的会话<br>在调用了fork()函数后，子进程全盘拷贝了父进程的会话期、进程组、控制终端等，虽然父进程退出了，但会话期、进程组、控制终端等并没有改变，因此，这还不是真正意义上的独立开来，而 setsid() 函数能够使进程完全独立出来。</p>
+</li>
+<li><p>再次 fork() 一个孙进程并让子进程退出<br>为什么要再次fork呢，假定有这样一种情况，之前的父进程fork出子进程以后还有别的事情要做，在做事情的过程中因为某种原因阻塞了，而此时的子进程因为某些非正常原因要退出的话，就会形成僵尸进程，所以由子进程fork出一个孙进程以后立即退出，孙进程作为守护进程会被init接管，此时无论父进程想做什么都随它了。</p>
+</li>
+<li><p>在孙进程中调用 chdir() 函数，让根目录 ”&#x2F;” 成为孙进程的工作目录</p>
+<p>这一步也是必要的步骤，使用fork创建的子进程继承了父进程的当前工作目录。由于在进程运行中，当前目录所在的文件系统（如“&#x2F;mnt&#x2F;usb”）是不能卸载的，这对以后的使用会造成诸多的麻烦（比如系统由于某种原因要进入单用户模式）。因此，通常的做法是让”&#x2F;“作为守护进程的当前工作目录，这样就可以避免上述的问题，当然，如有特殊需要，也可以把当前工作目录换成其他的路径，如&#x2F;tmp，改变工作目录的常见函数是chdir。</p>
+</li>
+<li><p>在孙进程中调用 umask() 函数，设置进程的文件权限掩码为0</p>
+<p>文件权限掩码是指屏蔽掉文件权限中的对应位。比如，有个文件权限掩码是050，它就屏蔽了文件组拥有者的可读与可执行权限。由于使用fork函数新建的子进程继承了父进程的文件权限掩码，这就给该子进程使用文件带来了诸多的麻烦。因此，把文件权限掩码设置为0，可以大大增强该守护进程的灵活性。设置文件权限掩码的函数是umask。在这里，通常的使用方法为umask(0)。</p>
+</li>
+<li><p>在孙进程中关闭任何不需要的文件描述符<br>同文件权限码一样，用fork函数新建的子进程会从父进程那里继承一些已经打开了的文件。这些被打开的文件可能永远不会被守护进程读写，但它们一样消耗系统资源，而且可能导致所在的文件系统无法卸下。</p>
+<p>在上面的第2)步之后，守护进程已经与所属的控制终端失去了联系。因此从终端输入的字符不可能达到守护进程，守护进程中用常规方法（如printf）输出的字符也不可能在终端上显示出来。所以，文件描述符为0、1和2 的3个文件（常说的输入、输出和报错）已经失去了存在的价值，也应被关闭。</p>
+</li>
+<li><p>守护进程退出处理<br>当用户需要外部停止守护进程运行时，往往会使用 kill 命令停止该守护进程。所以，守护进程中需要编码来实现 kill 发出的signal信号处理，达到进程的正常退出。</p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%BF%9B%E7%A8%8B/">#进程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>孤儿/僵尸/守护进程</div>
+      <div>https://tangerine-kitten-lux.netlify.app/孤儿僵尸守护进程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lux</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F-C-%E7%89%88/" title="状态模式(C++版)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">状态模式(C++版)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式(C++版)">
+                        <span class="hidden-mobile">单例模式(C++版)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+<script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="/js/model.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
