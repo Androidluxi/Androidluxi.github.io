@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tangerine-kitten-lux.netlify.app/img/siteicon/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86.png">
 <meta property="article:published_time" content="2025-03-26T16:18:37.000Z">
-<meta property="article:modified_time" content="2025-04-07T16:22:22.465Z">
+<meta property="article:modified_time" content="2025-04-10T16:18:38.351Z">
 <meta property="article:author" content="lux">
 <meta property="article:tag" content="计算机系统知识">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.9k 字
+          6.5k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          49 分钟
+          54 分钟
         
       </span>
     
@@ -698,7 +698,7 @@
 </ul>
 </li>
 </ol>
-<p>​										<img src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/软件设计师/zst讲义—作者：理想/zst讲义—作者：理想/assets/image-20230319101818583.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<p>​		<img src="https://gitee.com/silent-learner/imgs/raw/master/2025%E5%9B%BE%E7%89%87/20250411001823082.png" srcset="/img/loading.gif" lazyload alt="image-20230319101818583"></p>
 <ol start="2">
 <li><p>直接存储器方式（DMA）</p>
 <ul>
@@ -753,7 +753,7 @@
 <li><p>认证技术： </p>
 <ol>
 <li>摘要：将发送的明文进行Hash算法后得到的摘要放在密文后一起发送过去，与接收方解密后的明文进行相同的Hash算法得到的摘要进行对比，如果一致，则没有篡改，否则有篡改。 </li>
-<li>数字签名：发送方用自己的私钥对摘要进行签名（加密）得到数字签名放在密文后一起发送过去。接收方用发送方的公钥对数字签名进行验证（解密）如果验证成功则该消息没有被假冒且不能否认，否则该消息的真实性为假冒发送。</li>
+<li>数字签名：<font color="red" size="4">发送方用自己的私钥对摘要进行签名（加密）得到数字签名放在密文后一起发送过去。接收方用发送方的公钥对数字签名进行验证（解密）</font>如果验证成功则该消息没有被假冒且不能否认，否则该消息的真实性为假冒发送。</li>
 </ol>
 <ul>
 <li>使用数字签名确保消息不可否认</li>
@@ -775,27 +775,27 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">DES</td>
-<td align="center">RSA</td>
+<td align="center">DES (Data Encryption Standard): 一种早期的数据加密标准，使用56位密钥。由于其较短的密钥长度，现在被认为不安全。</td>
+<td align="center">RSA (Rivest–Shamir–Adleman): 最早提出的非对称加密算法之一，基于大整数分解问题，广泛应用在数据加密和数字签名中。</td>
 </tr>
 <tr>
-<td align="center">3DES</td>
-<td align="center">ECC</td>
+<td align="center">3DES (Triple DES): 是DES的一种改进形式，通过应用DES三次来增加安全性。</td>
+<td align="center">ECC (Elliptic Curve Cryptography): 基于椭圆曲线离散对数问题的加密技术，相比RSA可以在提供相同安全级别的条件下使用更短的密钥长度，因此更加高效。</td>
 </tr>
 <tr>
-<td align="center">RC-5</td>
-<td align="center">DSA</td>
+<td align="center">RC-5 (Rivest Cipher 5): 由Ron Rivest设计的一种对称密钥分组密码算法，允许用户选择块大小、密钥大小和轮数。</td>
+<td align="center">DSA (Digital Signature Algorithm): 主要用于数字签名，不是用来加密数据。它与RSA类似，但专门为数字签名设计。</td>
 </tr>
 <tr>
-<td align="center">IDEA</td>
+<td align="center">IDEA (International Data Encryption Algorithm): 一种128位密钥的对称加密算法，最初为PGP加密软件开发。</td>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">AES</td>
+<td align="center">AES (Advanced Encryption Standard): 目前最常用的对称加密标准之一，支持128, 192, 和256位密钥长度。AES因其高效性和安全性被广泛应用于各种场合。</td>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">RC4</td>
+<td align="center">RC4: 一种流加密算法，曾广泛应用于SSL&#x2F;TLS协议中，但由于发现了一些漏洞，逐渐被弃用或替换。</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
