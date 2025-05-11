@@ -5,7 +5,7 @@ index_img: /img/siteicon/多线程.png
 category:
   - Linux
 tags:
-  - Linux
+  - 线程
 ---
 
 <meta name="referrer" content="no-referrer"/>

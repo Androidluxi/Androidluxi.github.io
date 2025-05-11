@@ -4,9 +4,9 @@ abbrlink: 4c15
 date: 2024-02-23 23:40:53
 index_img: /img/siteicon/ExoPlayer简单使用.png
 category:
-  - Android
-tags:
   - 音视频
+tags:
+  - Android
 ---
 
 <meta name="referrer" content="no-referrer"/>
