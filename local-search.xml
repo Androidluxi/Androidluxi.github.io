@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>音视频基础知识</title>
+    <link href="/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <url>/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>音视频</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Android</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ffmpeg交叉编译</title>
     <link href="/ffmpeg%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/"/>
     <url>/ffmpeg%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</url>
@@ -576,14 +601,14 @@
     
     <categories>
       
-      <category>Android</category>
+      <category>音视频</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>音视频</tag>
+      <tag>Android</tag>
       
     </tags>
     
