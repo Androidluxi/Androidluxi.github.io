@@ -16,24 +16,24 @@
   <meta name="author" content="lux">
   <meta name="keywords" content="">
   
-    <meta name="description" content="为什么要编码？视频本质上就是一张张连续的图片快速播放。假设我们现在有24张联系的图片，将他们在1秒内快速切换，那么就形成了一个1秒的视频。 人眼睛的敏感度有限。一般来说，24到30 FPS之间的帧率已经足够让人感觉到动作的流畅性。但是就算如此，如果播放一个1分钟的1080P视频：   这实在太大了，所以我们需要使用编码的方式去压缩数据。 编码的目的：编码的目的，就是为了压缩。各种视频编码方式，">
+    <meta name="description" content="合抱之木，生于毫末；九层之台，起于累土。&#39;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="H.264编解码介绍">
-<meta property="og:url" content="https://tangerine-kitten-lux.netlify.app/H-264%E7%BC%96%E8%A7%A3%E7%A0%81%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:title" content="谈谈对zygote的理解">
+<meta property="og:url" content="https://tangerine-kitten-lux.netlify.app/%E8%B0%88%E8%B0%88%E5%AF%B9zygote%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="为什么要编码？视频本质上就是一张张连续的图片快速播放。假设我们现在有24张联系的图片，将他们在1秒内快速切换，那么就形成了一个1秒的视频。 人眼睛的敏感度有限。一般来说，24到30 FPS之间的帧率已经足够让人感觉到动作的流畅性。但是就算如此，如果播放一个1分钟的1080P视频：   这实在太大了，所以我们需要使用编码的方式去压缩数据。 编码的目的：编码的目的，就是为了压缩。各种视频编码方式，">
+<meta property="og:description" content="合抱之木，生于毫末；九层之台，起于累土。&#39;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tangerine-kitten-lux.netlify.app/img/siteicon/H.264%E7%BC%96%E8%A7%A3%E7%A0%81%E4%BB%8B%E7%BB%8D.jpg">
-<meta property="article:published_time" content="2025-05-12T14:32:57.000Z">
-<meta property="article:modified_time" content="2025-05-12T15:12:44.813Z">
+<meta property="og:image" content="https://tangerine-kitten-lux.netlify.app/img/19.jpg">
+<meta property="article:published_time" content="2025-05-15T15:56:33.000Z">
+<meta property="article:modified_time" content="2025-05-15T15:59:03.876Z">
 <meta property="article:author" content="lux">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tangerine-kitten-lux.netlify.app/img/siteicon/H.264%E7%BC%96%E8%A7%A3%E7%A0%81%E4%BB%8B%E7%BB%8D.jpg">
+<meta name="twitter:image" content="https://tangerine-kitten-lux.netlify.app/img/19.jpg">
   
   
   
-  <title>H.264编解码介绍 - 我的博客</title>
+  <title>谈谈对zygote的理解 - 我的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="H.264编解码介绍"></span>
+            <span id="subtitle" data-typed-text="谈谈对zygote的理解"></span>
           
         </div>
 
@@ -218,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-12 22:32" pubdate>
-          2025年5月12日 晚上
+        <time datetime="2025-05-15 23:56" pubdate>
+          2025年5月15日 晚上
         </time>
       </span>
     
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          0 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          9 分钟
+          1 分钟
         
       </span>
     
@@ -279,42 +279,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">H.264编解码介绍</h1>
+            <h1 style="display: none">谈谈对zygote的理解</h1>
             
             
               <div class="markdown-body">
                 
-                <meta name="referrer" content="no-referrer">
-
-<h2 id="为什么要编码？"><a href="#为什么要编码？" class="headerlink" title="为什么要编码？"></a>为什么要编码？</h2><p>视频本质上就是一张张连续的图片快速播放。假设我们现在有24张联系的图片，将他们在1秒内快速切换，那么就形成了一个1秒的视频。</p>
-<p>人眼睛的敏感度有限。一般来说，24到30 FPS之间的帧率已经足够让人感觉到动作的流畅性。但是就算如此，如果播放一个1分钟的1080P视频：</p>
-<img src="https://gitee.com/silent-learner/imgs/raw/master/2025图片/视频大小.png" srcset="/img/loading.gif" lazyload>
-
-<p><strong>这实在太大了，所以我们需要使用编码的方式去压缩数据。</strong></p>
-<h3 id="编码的目的："><a href="#编码的目的：" class="headerlink" title="编码的目的："></a>编码的目的：</h3><p>编码的目的，就是为了压缩。各种视频编码方式，都是为了让视频变得体积更小，有利于存储和传输。编码的 核心思想就是<strong>去除冗余信息</strong>。</p>
-<h3 id="编码的思路："><a href="#编码的思路：" class="headerlink" title="编码的思路："></a>编码的思路：</h3><p>空间冗余 &#x3D;&#x3D; 相邻像素重复：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">空间冗余：图像内部相邻像素之间存在较强的相关性多造成的冗余。<br></code></pre></td></tr></table></figure>
-
-<p>时间冗余 &#x3D;&#x3D; 帧之间差值：  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">时间冗余：视频图像序列中的不同帧之间的相关性所造成的冗余。<br></code></pre></td></tr></table></figure>
-
-<p>视觉冗余 &#x3D;&#x3D; 人类不敏感的颜色</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">视觉冗余：是指人眼不能感知或不敏感的那部分图像信息<br></code></pre></td></tr></table></figure>
-
-<p>信息熵冗余 &#x3D;&#x3D; 熵编码-哈夫曼算法</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">信息熵冗余：也称编码冗余，人们用于表达某一信息所需要的比特数总比理论上表示该信息所需要的最少比特 数要大，它们之间的差距就是信息熵冗余，或称编码冗余。<br></code></pre></td></tr></table></figure>
-
-<p>知识冗余 &#x3D;&#x3D; 人类(头 身体 腿)，汽车，房子 不需要记录</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">知识冗余：是指在有些图像中还包含与某些验证知识有关的信息。<br></code></pre></td></tr></table></figure>
-
-<p>基于以上思路，我们将传输的数据分成三种类型的帧数据：<strong>I帧、P帧和B帧</strong></p>
-<h4 id="帧内编码：I帧"><a href="#帧内编码：I帧" class="headerlink" title="帧内编码：I帧"></a>帧内编码：I帧</h4><p>I帧（Intra-coded Frame），即帧内编码，是一种独立的压缩方式。I帧完全自包含，它不依赖于其他帧的数据。每个I帧都包含完整的图像信息，类似于一张静态图片。这是视频流中的关键帧，其他帧（P帧和B帧）都需要依赖于I帧进行解码。</p>
-<p>I帧的优点是解码时不需要参考其他帧，能够快速显示画面。它通常作为视频流的起始点或恢复点，保证视频流的稳定性。缺点是，I帧的文件体积较大，因为它包含了完整的图像数据，而没有任何冗余信息。这使得I帧的压缩效率较低，尤其是在视频变化较小的情况下。</p>
-<h4 id="帧间编码：P帧和B帧"><a href="#帧间编码：P帧和B帧" class="headerlink" title="帧间编码：P帧和B帧"></a>帧间编码：P帧和B帧</h4><p>与I帧不同，P帧（Predicted Frame）和B帧（Bidirectional Predicted Frame）是帧间编码的代表。它们通过参考之前（P帧）或前后两帧（B帧）来编码差异数据，从而实现高效的压缩。</p>
-<p>P帧通过参考前一帧的数据来预测当前帧，因此可以仅编码与前一帧的差异。相比I帧，P帧的压缩效率更高，文件体积更小。</p>
-<p>B帧通过参考前后两帧的数据进行编码，压缩效果比P帧更强。B帧能够更精确地表示视频帧之间的变化，因此其压缩效率是三者中最优的。</p>
-<img src="https://gitee.com/silent-learner/imgs/raw/master/2025图片/IPB帧.png" srcset="/img/loading.gif" lazyload>
-
+                
                 
               </div>
             
@@ -332,7 +302,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" class="category-chain-item">音视频</a>
+  <a href="/categories/Android-%E8%BF%9B%E9%98%B6/" class="category-chain-item">Android 进阶</a>
   
   
 
@@ -359,8 +329,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>H.264编解码介绍</div>
-      <div>https://tangerine-kitten-lux.netlify.app/H-264编解码介绍/</div>
+      <div>谈谈对zygote的理解</div>
+      <div>https://tangerine-kitten-lux.netlify.app/谈谈对zygote的理解/</div>
     </div>
     <div class="license-meta">
       
@@ -372,7 +342,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月12日</div>
+          <div>2025年5月15日</div>
         </div>
       
       
@@ -404,9 +374,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E8%B0%88%E8%B0%88%E5%AF%B9zygote%E7%9A%84%E7%90%86%E8%A7%A3/" title="谈谈对zygote的理解">
+                      <a href="/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" title="音视频开发基础">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">谈谈对zygote的理解</span>
+                        <span class="hidden-mobile">音视频开发基础</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -414,8 +384,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="音视频基础知识">
-                        <span class="hidden-mobile">音视频基础知识</span>
+                      <a href="/H-264%E7%BC%96%E8%A7%A3%E7%A0%81%E4%BB%8B%E7%BB%8D/" title="H.264编解码介绍">
+                        <span class="hidden-mobile">H.264编解码介绍</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
