@@ -285,9 +285,9 @@
               <div class="markdown-body">
                 
                 <h1 id="滤镜效果"><a href="#滤镜效果" class="headerlink" title="滤镜效果"></a>滤镜效果</h1><p>先说一下，我要完成的效果：</p>
-<p><img src="/2023/05/16/%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/image-20230516135644852.png" srcset="/img/loading.gif" lazyload alt="image-20230516135644852"></p>
+<p><img src="/%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/image-20230516135644852.png" srcset="/img/loading.gif" lazyload alt="image-20230516135644852"></p>
 <p>给上面的的图片加上一层透明度25的黑色蒙层，或者说是一层淡黑色的滤镜。达到下面的效果。</p>
-<p><img src="/2023/05/16/%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/image-20230516135627211.png" srcset="/img/loading.gif" lazyload alt="image-20230516135627211"></p>
+<p><img src="/%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C/image-20230516135627211.png" srcset="/img/loading.gif" lazyload alt="image-20230516135627211"></p>
 <p>我现在已知的有两种方法：</p>
 <h2 id="1-使用ImageView-的api"><a href="#1-使用ImageView-的api" class="headerlink" title="1.使用ImageView 的api"></a>1.使用ImageView 的api</h2><p>当设置<strong>setBackgroundDrawable</strong>时，整个ImageView的控件背景色会变。<br>当设置<strong>setImageDrawable</strong>时，ImageView中间内容区会被图片填充。但是周围会有一些边距，默认无法填充整个控件（当然，这也是有属性设置的）。</p>
 <p><strong>ScaleType的值分别代表的意义： ImageView是Android中的基础图片显示控件，该控件有个重要的属性是ScaleType，该属性用以表示显示图片的方式，共有8种取值</strong> 　</p>

@@ -305,7 +305,7 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> AbstractStringBuilder <span class="hljs-title function_">append</span><span class="hljs-params">(String str)</span> &#123;<br>    <span class="hljs-keyword">if</span> (str == <span class="hljs-literal">null</span>)<br>        <span class="hljs-keyword">return</span> appendNull();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> str.length();<br>    ensureCapacityInternal(count + len);<br>    str.getChars(<span class="hljs-number">0</span>, len, value, count);<br>    count += len;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>此外，我们可以看到str&#x3D;&#x3D;null时候，这时候会给字符串追加一个null的字符串。如下：<img src="/2023/04/19/Java%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%BC%E6%8E%A5/image-20230419021203366.png" srcset="/img/loading.gif" lazyload alt="image-20230419021203366"></p>
+<p>此外，我们可以看到str&#x3D;&#x3D;null时候，这时候会给字符串追加一个null的字符串。如下：<img src="/Java%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%BC%E6%8E%A5/image-20230419021203366.png" srcset="/img/loading.gif" lazyload alt="image-20230419021203366"></p>
 <p>将这个字符串中的字符复制到目标字符数组中： str.getChars(0, len, value, count);</p>
 <ol start="3">
 <li>如果我们研究ensureCapasityInternal的底层逻辑，会发现它是通过数组复制实现的。</li>

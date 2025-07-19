@@ -298,7 +298,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">D/路茜: onCreate: <span class="hljs-number">2534464</span><br></code></pre></td></tr></table></figure>
 
 <p>我在drawablewe文件夹下保存的是一张796*796的图片</p>
-<p><img src="/2023/05/15/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/image-20230515215603113.png" srcset="/img/loading.gif" lazyload alt="image-20230515215603113"></p>
+<p><img src="/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/image-20230515215603113.png" srcset="/img/loading.gif" lazyload alt="image-20230515215603113"></p>
 <p><strong>解释</strong>：</p>
 <p>默认情况下 BitmapFactory 使用 Bitmap.Config.ARGB_8888 的存储方式来加载图片内容，而在这种存储模式下，每一个像素需要占用 4 个字节。因此上面图片 rodman 的内存大小可以使用如下公式来计算：</p>
 <blockquote>
@@ -315,10 +315,10 @@
 <blockquote>
 <p><code>Config</code> 和 <code>CompressFormat</code>，<code>Config</code> 是用来设置颜色配置信息的，<code>CompressFormat</code> 是用来设置压缩方式的</p>
 </blockquote>
-<p><img src="/2023/05/15/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/1736058-d530c7d0bb8e8cf6.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/1736058-d530c7d0bb8e8cf6.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="2-1-存储格式"><a href="#2-1-存储格式" class="headerlink" title="2.1 存储格式"></a>2.1 存储格式</h3><p><code>Bitmap</code>有常见的有前面四种存储方式，对应<code>Bitmap.Config</code>中的四个常量</p>
-<p><img src="/2023/05/15/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/image-20230515221256296.png" srcset="/img/loading.gif" lazyload alt="image-20230515221256296"></p>
-<p><img src="/2023/05/15/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBASk1XMTQwNw==,size_20,color_FFFFFF,t_70,g_se,x_16-16841590469981.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/image-20230515221256296.png" srcset="/img/loading.gif" lazyload alt="image-20230515221256296"></p>
+<p><img src="/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBASk1XMTQwNw==,size_20,color_FFFFFF,t_70,g_se,x_16-16841590469981.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <h2 id="2-2-压缩格式"><a href="#2-2-压缩格式" class="headerlink" title="2.2 压缩格式"></a>2.2 压缩格式</h2><blockquote>
 <p><strong>Bitmap.CompressFormat.JPEG</strong>:采用JPEG压缩算法，是一种有损压缩格式，会在压缩过程中改变图像原本质量，画质越差，对原来的图片质量损伤越大，但是得到的文件比较小，而且JPEG不支持透明度，当遇到透明度像素时，会以黑色背景填充。</p>
 </blockquote>
@@ -328,7 +328,7 @@
 <blockquote>
 <p><strong>Bitmap.CompressFormat.WEBP</strong>:WEBP是一种同时提供了有损压缩和无损压缩的图片文件格式，在14&lt;&#x3D;api&lt;&#x3D;17时，WEBP是一种有损压缩格式，而且不支持透明度，在api18以后WEBP是一种无损压缩格式，而且支持透明度，有损压缩时，在质量相同的情况下，WEBP格式的图片体积比JPEG小40%，但是编码时间比JPEG长8倍。在无损压缩时，无损的WEBP图片比PNG压缩小26%，但是WEBP的压缩时间是PNG格式压缩时间的5倍。</p>
 </blockquote>
-<p><img src="/2023/05/15/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBASk1XMTQwNw==,size_20,color_FFFFFF,t_70,g_se,x_16-16841590469992.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/Android-Bitmap-%E5%85%A8%E9%9D%A2%E8%AF%A6%E8%A7%A3/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBASk1XMTQwNw==,size_20,color_FFFFFF,t_70,g_se,x_16-16841590469992.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 
                 
               </div>
